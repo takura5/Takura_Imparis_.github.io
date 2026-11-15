@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d17">
+  <meta name="description" content="Takura Imparis — портфолио проектов: приложения, инженерные инструменты и интерактивные истории.">
+  <title>Takura Imparis — Developer Portfolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#080d17; --panel:#101a2b; --panel-2:#0c1726; --text:#f0f7ff;
+      --muted:#9aabc2; --line:#24364c; --cyan:#59f4df; --violet:#ac8aff;
+      --pink:#ff6da9; --max:1160px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 70% -10%,rgba(65,215,213,.14),transparent 36%),radial-gradient(ellipse at -5% 30%,rgba(120,67,223,.11),transparent 35%); }
+    a { color:inherit; text-decoration:none; }
+    a:focus-visible,button:focus-visible { outline:2px solid var(--cyan); outline-offset:4px; }
+    button { font:inherit; }
+    .wrap { max-width:var(--max); margin:auto; padding-inline:28px; }
+    .topbar { position:sticky; top:0; z-index:20; border-bottom:1px solid rgba(157,188,226,.12); background:rgba(8,13,23,.85); backdrop-filter:blur(18px); }
+    .topbar-inner { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { display:inline-flex; gap:12px; align-items:center; font-weight:850; letter-spacing:.14em; font-size:15px; white-space:nowrap; }
+    .brand-sign { display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--cyan); border-radius:7px; box-shadow:inset 0 0 14px rgba(89,244,223,.14); color:var(--cyan); }
+    .brand-accent { color:var(--cyan); }
+    nav { display:flex; align-items:center; flex-wrap:wrap; gap:clamp(14px,2.8vw,34px); }
+    nav a { font-size:13px; color:#c0ccdb; transition:color .2s; }
+    nav a:hover { color:var(--cyan); }
+    .nav-cta { padding:10px 16px; color:var(--cyan)!important; border:1px solid rgba(89,244,223,.45); border-radius:9px; }
+    .nav-cta:hover { background:rgba(89,244,223,.08); }
+    .hero { position:relative; display:grid; grid-template-columns:1.03fr .97fr; min-height:640px; align-items:center; gap:36px; padding-block:85px 94px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:11px; letter-spacing:.19em; font-weight:800; color:var(--cyan); text-transform:uppercase; }
+    .led { width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 18px var(--cyan); }
+    h1 { margin:22px 0 18px; font-size:clamp(48px,6.7vw,94px); line-height:1.02; letter-spacing:-.068em; font-weight:880; }
+    .gradient { background:linear-gradient(110deg,#f1f9ff 7%,#67f5e1 58%,#b0a0ff 110%); color:transparent; background-clip:text; }
+    .hero-summary { font-size:clamp(16px,1.8vw,19px); color:#adbdd0; max-width:570px; line-height:1.75; }
+    .hero-cta { margin-top:36px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { display:inline-flex; gap:11px; align-items:center; justify-content:center; min-height:48px; padding:13px 19px; border-radius:10px; font-weight:750; font-size:13px; transition:transform .2s,border-color .2s,background .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { color:#082322; background:var(--cyan); border:1px solid var(--cyan); box-shadow:0 9px 34px rgba(89,244,223,.13); }
+    .btn-secondary { color:#d8e8f8; background:rgba(255,255,255,.035); border:1px solid #32445d; }
+    .btn-secondary:hover { border-color:var(--cyan); }
+    .btn[aria-disabled="true"] { opacity:.54; cursor:not-allowed; box-shadow:none; }
+    .btn[aria-disabled="true"]:hover { transform:none; }
+    .hero-micro { margin-top:38px; display:flex; gap:20px; align-items:center; flex-wrap:wrap; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:11px; color:#7e93ad; }
+    .hero-micro span::before { content:"▸ "; color:var(--cyan); }
+    .visual { position:relative; min-height:440px; isolation:isolate; display:grid; place-items:center; }
+    .visual::before { content:""; position:absolute; width:min(100%,480px); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(71,213,224,.16),transparent 58%); filter:blur(12px); }
+    .ring { position:absolute; width:81%; aspect-ratio:1; border:1px solid rgba(102,222,236,.14); border-radius:50%; box-shadow:0 0 0 42px rgba(98,211,228,.018),0 0 0 84px rgba(98,211,228,.016); }
+    .ring::before,.ring::after { content:""; position:absolute; inset:17%; border:1px dashed rgba(111,228,236,.26); border-radius:50%; }
+    .ring::after { inset:36%; border-style:solid; border-color:rgba(111,228,236,.28); }
+    .core { position:relative; width:270px; aspect-ratio:1; display:grid; place-items:center; transform:rotate(-8deg); }
+    .core::before { content:""; position:absolute; inset:21px; transform:rotate(45deg); border:2px solid #55e8db; border-radius:22px; box-shadow:0 0 30px rgba(61,232,218,.17),inset 0 0 32px rgba(61,232,218,.07); background:linear-gradient(145deg,rgba(28,73,98,.55),rgba(21,24,45,.76)); }
+    .core::after { content:""; position:absolute; inset:51px; transform:rotate(45deg); border:1px solid rgba(164,143,255,.72); border-radius:11px; }
+    .core-letter { position:relative; z-index:1; font-size:105px; line-height:1; font-weight:850; letter-spacing:-.12em; color:#bdfdf3; text-shadow:0 0 25px rgba(97,249,223,.3); padding-right:12px; }
+    .float { position:absolute; padding:12px 14px; background:rgba(13,23,38,.94); border:1px solid #2c435a; border-radius:12px; color:#ccdcf0; font-size:11px; letter-spacing:.05em; box-shadow:0 12px 55px rgba(0,0,0,.2); }
+    .float b { display:block; color:var(--cyan); font-size:12px; margin-top:2px; }
+    .float-one { left:0; top:19%; }
+    .float-two { right:0; bottom:17%; }
+    .section { padding-block:85px; scroll-margin-top:88px; }
+    .section-heading { display:flex; justify-content:space-between; gap:30px; align-items:end; margin-bottom:32px; }
+    .section-kicker { color:var(--cyan); font-size:11px; letter-spacing:.21em; text-transform:uppercase; font-weight:800; }
+    h2 { font-size:clamp(31px,4.1vw,48px); letter-spacing:-.045em; line-height:1.12; margin:11px 0 0; }
+    .section-intro { max-width:420px; color:var(--muted); font-size:14px; margin:0; }
+    .filters { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:25px; }
+    .filter { border:1px solid #2c4157; border-radius:9px; background:transparent; padding:9px 15px; color:#a9bbd2; cursor:pointer; font-size:12px; }
+    .filter:hover,.filter[aria-pressed="true"] { background:rgba(89,244,223,.1); border-color:var(--cyan); color:var(--cyan); }
+    .projects { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .project { display:flex; flex-direction:column; min-height:272px; border:1px solid #26384c; border-radius:16px; padding:27px; background:linear-gradient(145deg,#111e30,#0b1422); transition:transform .2s,border-color .2s; }
+    .project:hover { transform:translateY(-4px); border-color:#4d8e99; }
+    .project[hidden] { display:none!important; }
+    .project-top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .project-symbol { display:grid; place-items:center; width:48px; height:48px; border:1px solid #31505f; border-radius:12px; background:rgba(89,244,223,.055); color:var(--cyan); font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:18px; font-weight:800; }
+    .project-status { border:1px solid #33435d; color:#9eb2cf; border-radius:50px; padding:5px 10px; font-size:10px; white-space:nowrap; }
+    .project h3 { font-size:24px; letter-spacing:-.035em; margin:25px 0 8px; }
+    .project p { margin:0; font-size:13px; line-height:1.7; color:#9dafc5; max-width:440px; }
+    .chips { margin-top:auto; padding-top:20px; display:flex; gap:7px; flex-wrap:wrap; }
+    .chip { font-size:10px; color:#a8bfd2; border:1px solid #293d53; border-radius:6px; padding:4px 8px; }
+    .about { display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center; }
+    .about-content p { color:#adbdd0; max-width:640px; line-height:1.9; }
+    .terminal { border:1px solid #2b465c; border-radius:14px; overflow:hidden; background:#0b1726; box-shadow:0 30px 60px rgba(0,0,0,.15); }
+    .terminal-top { padding:13px 16px; background:#142339; border-bottom:1px solid #273d55; display:flex; gap:7px; align-items:center; }
+    .dot { width:8px; height:8px; border-radius:50%; background:#a4bacb; opacity:.8; }
+    .dot:first-child { background:#ff6f84; }.dot:nth-child(2) { background:#ffcf77; }.dot:nth-child(3) { background:#6ff0c0; }
+    .terminal-label { margin-left:auto; color:#93a6ba; font-size:10px; font-family:monospace; }
+    .terminal pre { margin:0; padding:26px; overflow-x:auto; font-size:12px; line-height:2; color:#c4e0fa; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .term-key { color:var(--violet); }.term-value { color:var(--cyan); }.term-comment { color:#728ca5; }
+    .contact-card { border:1px solid #315367; background:linear-gradient(120deg,rgba(42,115,128,.17),rgba(84,47,145,.09)); border-radius:18px; padding:42px; display:flex; align-items:center; justify-content:space-between; gap:30px; }
+    .contact-card h2 { margin-top:8px; }.contact-card p { color:#aebed2; margin-bottom:0; max-width:600px; }
+    footer { border-top:1px solid #233447; padding-block:30px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:18px; align-items:center; flex-wrap:wrap; font-size:11px; color:#859bb4; }
+    .footer-inner span:last-child { color:var(--cyan); }
+    @media (max-width:900px) { .hero { grid-template-columns:1fr; padding-top:72px; gap:12px; }.visual { min-height:330px; max-width:520px; width:100%; margin-inline:auto; }.ring { width:65%; }.about { grid-template-columns:1fr; }.section-heading { align-items:start; flex-direction:column; gap:12px; }.float-one { left:9%; }.float-two { right:9%; } }
+    @media (max-width:620px) { .wrap { padding-inline:20px; }.topbar-inner { min-height:72px; flex-wrap:wrap; padding-block:13px; gap:12px; }.brand { font-size:13px; } nav { width:100%; justify-content:space-between; gap:7px; } nav a { font-size:11px; }.nav-cta { padding:7px 10px; }.hero { padding-block:60px 40px; min-height:auto; }.hero-summary { font-size:15px; }.hero-micro { gap:10px; }.visual { min-height:310px; }.core { width:215px; }.core-letter { font-size:84px; }.ring { width:79%; }.float { font-size:9px; }.float-one { left:0; }.float-two { right:0; }.section { padding-block:58px; scroll-margin-top:120px; }.projects { grid-template-columns:1fr; }.project { min-height:260px; padding:23px; }.contact-card { padding:27px; align-items:stretch; flex-direction:column; }.contact-card .btn { align-self:flex-start; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .btn,.project { transition:none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="На главную"><span class="brand-sign">T</span><span>TAKURA<span class="brand-accent">.DEV</span></span></a>
+      <nav aria-label="Главная навигация"><a href="#projects">Проекты</a><a href="#about">Обо мне</a><a class="nav-cta" href="#contact">Контакты ↗</a></nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="wrap hero" aria-labelledby="hero-heading">
+      <div>
+        <div class="eyebrow"><span class="led" aria-hidden="true"></span> Personal portfolio / 2026</div>
+        <h1 id="hero-heading">Привет.<br>Я <span class="gradient">Takura<br>Imparis.</span></h1>
+        <p class="hero-summary">Создаю цифровые инструменты, инженерные решения и интерактивные истории. Люблю проекты, в которых технология — не декорация, а часть идеи.</p>
+        <div class="hero-cta"><a class="btn btn-primary" href="#projects">Смотреть проекты <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#about">Узнать обо мне</a></div>
+        <div class="hero-micro"><span>Python / Flutter</span><span>Проектирование</span><span>Интерактивные истории</span></div>
+      </div>
+      <div class="visual" aria-label="Декоративная графика с буквой T">
+        <div class="ring" aria-hidden="true"></div><div class="core" aria-hidden="true"><span class="core-letter">T</span></div>
+        <div class="float float-one" aria-hidden="true">STATUS <b>● BUILDING WHAT'S NEXT</b></div>
+        <div class="float float-two" aria-hidden="true">SYSTEM <b>TAKURA // ONLINE</b></div>
+      </div>
+    </section>
+    <section class="wrap section" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading"><div><div class="section-kicker">01 / Selected work</div><h2 id="projects-title">Мои проекты<span style="color:var(--cyan)">.</span></h2></div><p class="section-intro">Публичная витрина идей и разработок. Репозитории и демоверсии можно подключать постепенно.</p></div>
+      <div class="filters" role="group" aria-label="Фильтр проектов"><button class="filter" type="button" data-filter="all" aria-pressed="true">Все проекты</button><button class="filter" type="button" data-filter="app" aria-pressed="false">Приложения</button><button class="filter" type="button" data-filter="engineering" aria-pressed="false">Инженерия</button><button class="filter" type="button" data-filter="creative" aria-pressed="false">Истории</button></div>
+      <div class="projects" id="project-grid">
+        <article class="project" data-category="app"><div class="project-top"><div class="project-symbol" aria-hidden="true">↗</div><span class="project-status">Прототип</span></div><h3>UniNav</h3><p>Навигация по университету: поиск аудиторий, этажи, схемы корпусов и удобный маршрут до нужного места.</p><div class="chips"><span class="chip">Flutter</span><span class="chip">Web</span><span class="chip">Навигация</span></div></article>
+        <article class="project" data-category="engineering"><div class="project-top"><div class="project-symbol" aria-hidden="true">≈</div><span class="project-status">Разработка</span></div><h3>UniCav</h3><p>Инженерный проект, посвящённый расчёту и исследованию устройства гидродинамической кавитации для сточных вод.</p><div class="chips"><span class="chip">Python</span><span class="chip">PySide6</span><span class="chip">Инженерия</span></div></article>
+        <article class="project" data-category="creative"><div class="project-top"><div class="project-symbol" aria-hidden="true">☷</div><span class="project-status">Разработка</span></div><h3>HAUNTED OS</h3><p>Интерактивная хоррор-история, в которой интерфейс операционной системы становится частью повествования.</p><div class="chips"><span class="chip">Interactive fiction</span><span class="chip">Horror</span><span class="chip">Web</span></div></article>
+        <article class="project" data-category="app"><div class="project-top"><div class="project-symbol" aria-hidden="true">·−</div><span class="project-status">Идея / прототип</span></div><h3>Morse Translator</h3><p>Концепция приложения для кодирования и декодирования сообщений — от азбуки Морзе до других систем записи.</p><div class="chips"><span class="chip">Кодирование</span><span class="chip">Утилита</span><span class="chip">Обучение</span></div></article>
+      </div>
+    </section>
+    <section class="wrap section about" id="about" aria-labelledby="about-title">
+      <div class="about-content"><div class="section-kicker">02 / About</div><h2 id="about-title">Разработка без<br>чужого сценария<span style="color:var(--cyan)">.</span></h2><p>Мои интересы пересекают разработку приложений, инженерное проектирование и цифровое творчество. Здесь я собираю свои идеи, эксперименты и результаты — от ранних прототипов до готовых решений.</p><p>Этот сайт будет развиваться вместе с проектами: новые релизы, демоверсии, заметки о разработке и открытый код появятся здесь по мере готовности.</p></div>
+      <div class="terminal" aria-label="Карточка направлений работы"><div class="terminal-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="terminal-label">profile.json</span></div><pre>{
+  <span class="term-key">"name"</span>: <span class="term-value">"Takura Imparis"</span>,
+  <span class="term-key">"focus"</span>: [
+    <span class="term-value">"Software"</span>,
+    <span class="term-value">"Engineering"</span>,
+    <span class="term-value">"Interactive stories"</span>
+  ],
+  <span class="term-key">"status"</span>: <span class="term-value">"Building"</span>
+}
+<span class="term-comment">// More projects incoming</span></pre></div>
+    </section>
+    <section class="wrap section" id="contact" aria-labelledby="contact-title"><div class="contact-card"><div><div class="section-kicker">03 / Connect</div><h2 id="contact-title">Есть идея? На связи<span style="color:var(--cyan)">.</span></h2><p>Мои репозитории и дальнейшие обновления — на GitHub. Ссылка заработает после того, как ты укажешь свой GitHub-ник в настройке сайта.</p></div><a class="btn btn-primary" id="github-profile" href="https://github.com/" target="_blank" rel="noopener noreferrer">Мой GitHub ↗</a></div></section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>© <span id="year">2026</span> Takura Imparis. Сделано вручную.</span><span>DESIGN // BUILD // REPEAT</span></div></footer>
+  <script>
+    // НАСТРОЙКА: замени текст ниже на свой настоящий GitHub-ник без @.
+    // Пример: const GITHUB_USERNAME = "TakuraImparis";
+    const GITHUB_USERNAME = "YOUR_GITHUB_USERNAME";
+
+    const githubLink = document.getElementById("github-profile");
+    if (GITHUB_USERNAME && GITHUB_USERNAME !== "YOUR_GITHUB_USERNAME") {
+      githubLink.href = `https://github.com/${encodeURIComponent(GITHUB_USERNAME)}`;
+      document.querySelector("#contact p").textContent = "Мои репозитории, эксперименты и обновления — на GitHub. Заглядывай за новым кодом и релизами.";
+    } else {
+      githubLink.removeAttribute("href");
+      githubLink.removeAttribute("target");
+      githubLink.setAttribute("aria-disabled", "true");
+      githubLink.title = "Укажи свой GitHub-ник в файле index.html";
+      githubLink.textContent = "Добавить GitHub-ник";
+    }
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+    const filterButtons = document.querySelectorAll("[data-filter]");
+    const projectCards = document.querySelectorAll(".project");
+    filterButtons.forEach(button => button.addEventListener("click", () => {
+      const selected = button.dataset.filter;
+      filterButtons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+      projectCards.forEach(card => card.hidden = selected !== "all" && card.dataset.category !== selected);
+    }));
+  </script>
+</body>
+</html>
