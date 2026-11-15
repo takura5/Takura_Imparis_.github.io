@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#071017">
   <meta name="description" content="Takura OS — интерактивное портфолио Takura Imparis: приложения, инженерия и цифровые истории.">
-  <title>TAKURA OS — Interactive Portfolio</title>
+  <title>TAKURA OS 3.0 — Interactive Portfolio</title>
   <style>
     :root { color-scheme:dark; --bg:#071017; --panel:#0c171f; --panel2:#12232c; --edge:#29434d; --edge2:#42636b; --text:#e8fff9; --muted:#91aeb1; --accent:#64f9d2; --accent-soft:rgba(100,249,210,.13); --accent-halo:rgba(100,249,210,.23); --warning:#ffc982; --bar:rgba(6,15,21,.87); --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; --sans:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
     :root[data-theme="violet"] { --accent:#c2a3ff;--accent-soft:rgba(194,163,255,.14);--accent-halo:rgba(194,163,255,.25);--edge2:#665481; }
@@ -33,12 +33,98 @@
     @media (max-width:760px) { .topbar {height:50px;padding-inline:12px}.topright .desktop-only {display:none}.main-area {inset:50px 0 74px}.side-rail {top:auto;bottom:21px;left:14px;right:14px;flex-direction:row;flex-wrap:wrap;width:auto;gap:7px;justify-content:center}.desktop-icon {width:79px;min-height:85px;padding:6px 1px}.desktop-icon .glyph {height:42px;width:42px;font-size:18px}.desktop-icon .label {font-size:10px}.hero {left:25px;top:8vh;right:25px}.hero h1 {font-size:clamp(55px,16vw,98px)}.hero p {font-size:13px;max-width:350px}.hero .hero-meta {font-size:9px}.desktop::after {right:-55%;top:15%;width:95vw;height:95vw}.side-info {display:none}.taskbar {height:74px;padding-inline:8px;gap:7px}.task-item {max-width:105px;padding:9px}.task-right {font-size:10px;gap:3px}.task-right .status-label {display:none}.window {left:5px!important;top:5px!important;width:calc(100% - 10px)!important;height:calc(100% - 10px)!important;max-width:none!important;border-radius:11px}.window.maximized {left:5px!important;top:5px!important;width:calc(100% - 10px)!important;height:calc(100% - 10px)!important}.window-body {padding:19px}.split {grid-template-columns:1fr}.sys-symbol {display:none}.projects-grid {grid-template-columns:1fr}.project-card {min-height:150px}.about-tiles {grid-template-columns:1fr}.detail-banner {gap:13px}.detail-logo {flex-basis:58px;height:58px;font-size:27px}.detail-banner h2 {font-size:23px}.terminal-feed {padding:16px;font-size:11px}.terminal-form {padding:11px}.terminal-hint {display:none}}
     @media (max-height:660px) and (min-width:761px) {.hero {top:60px}.side-rail {gap:3px;top:10px}.desktop-icon {min-height:74px}.desktop-icon .glyph {width:39px;height:39px}.side-info {display:none}}
     @media(prefers-reduced-motion:reduce) {*,*::before,*::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  /* TAKURA OS 3.0: expanded workspace */
+:root[data-theme="rose"]{--accent:#ff8cb5;--accent-soft:rgba(255,140,181,.14);--accent-halo:rgba(255,140,181,.24);--edge2:#87566d}
+.desktop[data-wallpaper="nebula"]{background:radial-gradient(ellipse at 69% 27%,rgba(113,84,244,.32),transparent 42%),radial-gradient(ellipse at 22% 83%,rgba(42,192,178,.23),transparent 42%),#070d18}
+.desktop[data-wallpaper="sunset"]{background:radial-gradient(ellipse at 82% 20%,rgba(255,127,102,.3),transparent 48%),radial-gradient(ellipse at 18% 70%,rgba(137,65,185,.3),transparent 53%),#140e1d}
+.desktop[data-wallpaper="void"]{background:#050b0e}
+.desktop[data-wallpaper="void"]::after{display:none}
+.desktop.reduce-glow .window,.desktop.reduce-glow .project-card,.desktop.reduce-glow .status-dot {box-shadow:none!important}
+.desktop.compact .desktop-icon{min-height:74px}.desktop.compact .window-body{padding:19px}
+.side-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:186px;gap:7px;align-content:start;top:26px;max-height:calc(100% - 38px);overflow-y:auto;scrollbar-width:thin}
+.desktop-icon{min-height:82px}
+.hero{left:clamp(228px,21vw,340px)}
+.win-actions{margin-left:auto}
+.files-window .window-body{padding:0;display:flex;flex-direction:column;overflow:hidden}
+.file-shell{display:grid;grid-template-columns:174px minmax(0,1fr);height:100%;min-height:0}
+.file-nav{border-right:1px solid var(--edge);padding:15px 11px;background:#0a171f;overflow:auto}
+.file-nav h3{font:10px var(--mono);color:var(--accent);letter-spacing:.15em;margin:0 0 12px}
+.file-dir{width:100%;display:flex;align-items:center;gap:10px;border:1px solid transparent;border-radius:8px;color:#b3cdd0;padding:10px 9px;text-align:left;background:transparent;font:11px var(--mono)}
+.file-dir:hover,.file-dir.selected{border-color:var(--edge2);background:var(--accent-soft);color:var(--accent)}
+.file-content{min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.file-toolbar{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:12px;border-bottom:1px solid var(--edge);background:#0d1e26}
+.file-path{margin-right:auto;color:var(--accent);font:11px var(--mono)}
+.mini-btn{border:1px solid var(--edge2);border-radius:7px;padding:7px 10px;background:#10222b;color:var(--text);font:11px var(--mono)}
+.mini-btn:hover{border-color:var(--accent);color:var(--accent)}
+.mini-btn:disabled{opacity:.35;cursor:not-allowed}
+.file-main{padding:17px;overflow:auto;flex:1;min-height:0}
+.file-list{display:grid;gap:8px}
+.file-entry{width:100%;padding:13px 15px;display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--edge);background:#10212b;color:var(--text);border-radius:10px}
+.file-entry:hover,.file-entry.selected{border-color:var(--accent);background:var(--accent-soft)}
+.file-entry .file-symbol{font:800 20px var(--mono);color:var(--accent);width:31px;text-align:center}
+.file-entry .file-name{font:12px var(--mono);overflow-wrap:anywhere}
+.file-entry .file-desc{color:var(--muted);font:10px var(--mono);margin-top:2px}
+.file-editor{display:grid;gap:10px;height:100%;grid-template-rows:auto minmax(160px,1fr) auto}
+.file-editor textarea{width:100%;resize:vertical;min-height:160px;max-height:100%;font:12px/1.6 var(--mono);color:var(--text);background:#07141c;border:1px solid var(--edge2);border-radius:8px;padding:13px}
+.file-editor textarea:read-only{opacity:.86}
+.file-editor .editor-actions{display:flex;flex-wrap:wrap;gap:7px}
+.file-editor h3{margin:0;font-size:15px;overflow-wrap:anywhere}
+.file-muted{color:var(--muted);font-size:12px}
+.file-editor .unsaved{color:var(--warning)}
+.music-window .window-body{padding:0;display:flex;flex-direction:column;gap:0}
+.music-shell{display:grid;grid-template-columns:minmax(170px,.8fr) minmax(0,1.2fr);gap:0;height:100%;min-height:0}
+.music-now{display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;border-right:1px solid var(--edge);padding:20px;background:linear-gradient(125deg,var(--accent-soft),#101c27)}
+.album-art{width:min(100%,175px);aspect-ratio:1;display:grid;place-items:center;border-radius:19px;border:1px solid var(--accent);background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(255,255,255,.025) 14px 15px),#14242d;box-shadow:0 0 42px var(--accent-soft);font:800 75px var(--mono);color:var(--accent)}
+.music-track{font-size:13px;font-weight:800;text-align:center;overflow-wrap:anywhere;max-width:100%}
+.music-sub{font:10px var(--mono);color:var(--muted);text-align:center}
+.music-right{display:flex;flex-direction:column;padding:21px;gap:13px;min-height:0}
+.music-controls{display:flex;align-items:center;justify-content:center;gap:11px}
+.music-controls .mini-btn{min-width:42px;font-size:17px}
+.music-controls .play-btn{background:var(--accent);color:#061318;border-color:var(--accent)}
+.music-timeline{display:grid;grid-template-columns:35px minmax(0,1fr) 35px;gap:9px;align-items:center;font:10px var(--mono);color:var(--muted)}
+.music-timeline input,.music-volume input{width:100%;accent-color:var(--accent)}
+.music-volume{display:flex;gap:10px;align-items:center;color:var(--muted);font:11px var(--mono)}
+.music-volume input{max-width:140px}
+.music-playlist{min-height:0;overflow:auto;display:grid;align-content:start;gap:5px}
+.music-item{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:7px;border:1px solid transparent;background:#0c1e27;color:#c6e3e2;padding:10px;text-align:left;font-size:12px;overflow-wrap:anywhere}
+.music-item.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.music-item:hover{border-color:var(--edge2)}
+.music-drop{border:1px dashed var(--edge2);border-radius:8px;padding:10px;color:var(--muted);text-align:center;font:11px/1.6 var(--mono)}
+.music-drop.is-dragging{color:var(--accent);border-color:var(--accent)}
+.picker-row{display:flex;gap:9px;flex-wrap:wrap}
+.picker{border:1px solid var(--edge2);border-radius:9px;background:#10212b;padding:13px 15px;color:var(--text);font:11px var(--mono);text-align:left;min-width:105px;position:relative}
+.picker.selected{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 1px var(--accent-soft)}
+.picker:hover{border-color:var(--accent)}
+.settings-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.boot-screen{position:fixed;z-index:500;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 48%,#112734,#04080f 65%);color:#e9fff8;transition:opacity .35s ease,visibility .35s ease}
+.boot-screen.done{opacity:0;visibility:hidden;pointer-events:none}
+.boot-card{width:min(480px,calc(100vw - 45px));padding:35px 30px;border:1px solid #345461;border-radius:18px;background:rgba(7,22,30,.87);box-shadow:0 24px 95px #0009;text-align:center}
+.boot-symbol{font:900 80px var(--mono);color:var(--accent);letter-spacing:-.12em;text-shadow:0 0 35px var(--accent-halo);line-height:1}
+.boot-title{font:800 19px var(--mono);letter-spacing:.13em;margin-top:15px}
+.boot-sub{font:11px var(--mono);color:#8caeb1;margin:10px 0 24px}
+.boot-meter{height:5px;border:1px solid var(--edge);background:#07131b;border-radius:6px;overflow:hidden}
+.boot-fill{width:0;height:100%;background:var(--accent);box-shadow:0 0 16px var(--accent);transition:width .15s linear}
+.boot-status{font:11px var(--mono);color:#8caeb1;margin:12px 0 20px;min-height:17px}
+.boot-skip{font:11px var(--mono);border:1px solid var(--edge2);background:transparent;color:var(--muted);border-radius:7px;padding:7px 14px}
+.boot-skip:hover{color:var(--accent);border-color:var(--accent)}
+@media (max-width:760px){
+ .side-rail{display:flex;top:auto;bottom:10px;left:9px;right:9px;width:auto;max-height:105px;overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;justify-content:flex-start;scrollbar-width:thin;gap:6px}
+ .desktop-icon{flex:0 0 69px;width:69px;min-height:77px;padding:4px 2px}
+ .desktop-icon .glyph{width:38px;height:38px;font-size:17px}.desktop-icon .label{font-size:9px}
+ .hero{left:25px;top:8vh;right:25px}
+ .file-shell{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+ .file-nav{display:flex;gap:5px;overflow-x:auto;overflow-y:hidden;padding:7px}.file-nav h3{display:none}.file-dir{width:auto;white-space:nowrap;padding:8px}
+ .music-shell{grid-template-columns:1fr;overflow:auto}.music-now{flex-direction:row;justify-content:flex-start;padding:12px;border-right:0;border-bottom:1px solid var(--edge)}
+ .album-art{width:68px;flex:0 0 68px;border-radius:10px;font-size:32px}.music-track{text-align:left}.music-sub{text-align:left}
+ .music-right{min-height:260px;padding:14px}.file-toolbar{padding:8px}.file-main{padding:11px}
+}
+
   </style>
 </head>
 <body>
   <div class="desktop" id="desktop">
     <header class="topbar">
-      <div class="brand"><span class="brand-mark">T</span><span>TAKURA<span class="os">//OS</span></span><span style="font-size:9px;color:#779aa1">V 2.0</span></div>
+      <div class="brand"><span class="brand-mark">T</span><span>TAKURA<span class="os">//OS</span></span><span style="font-size:9px;color:#779aa1">V 3.0</span></div>
       <div class="topright"><span class="desktop-only"><span class="status-dot"></span>SYSTEM ONLINE</span><span class="desktop-only">PORTFOLIO MODE</span><time id="clock">--:--</time></div>
     </header>
     <div class="main-area" id="main-area">
@@ -48,6 +134,8 @@
         <button class="desktop-icon" data-open="terminal"><span class="glyph">&gt;_</span><span class="label">Терминал</span></button>
         <button class="desktop-icon" data-open="about"><span class="glyph">ID</span><span class="label">Обо мне</span></button>
         <button class="desktop-icon" data-open="settings"><span class="glyph">⚙</span><span class="label">Настройки</span></button>
+        <button class="desktop-icon" data-open="files"><span class="glyph">▣</span><span class="label">Файлы</span></button>
+        <button class="desktop-icon" data-open="music"><span class="glyph">♫</span><span class="label">Музыка</span></button>
       </div>
       <div class="side-info"><b>WELCOME TO THE GRID</b><br>USER // TAKURA IMPARIS<br>MODE // INTERACTIVE PORTFOLIO<br>NO BACKEND REQUIRED</div>
       <div class="window-layer" id="window-layer" aria-live="off"></div>
@@ -56,6 +144,13 @@
     <footer class="taskbar"><button class="launcher" id="launcher" aria-label="Открыть меню приложений" aria-expanded="false">T</button><span class="task-divider"></span><button class="task-item" id="search-btn" title="Поиск приложений Ctrl+K">⌕ ПОИСК</button><div class="task-items" id="task-items"></div><div class="task-right"><span class="status-label"><b>●</b> ONLINE</span><span id="clock-bottom">--:--</span></div></footer>
     <div class="search-overlay" id="search-overlay" hidden><div class="search-card" role="dialog" aria-modal="true" aria-label="Поиск приложений"><input class="search-box" id="search-input" placeholder="Найти приложение или проект…" autocomplete="off" aria-label="Поиск"><div class="search-results" id="search-results"></div></div></div>
     <div class="toast" id="toast" role="status" hidden></div>
+    <div class="boot-screen" id="boot-overlay" role="status" aria-label="Загрузка TAKURA OS">
+      <div class="boot-card"><div class="boot-symbol">T</div><div class="boot-title">TAKURA // OS 3.0</div>
+      <p class="boot-sub">LOCAL SYSTEM · INITIALIZING</p>
+      <div class="boot-meter"><div class="boot-fill" id="boot-fill"></div></div>
+      <div class="boot-status" id="boot-status">Подключение модулей…</div>
+      <button class="boot-skip" id="boot-skip" type="button">Пропустить загрузку ↗</button></div>
+    </div>
   </div>
   <noscript>Для интерактивного портфолио Takura OS необходимо включить JavaScript.</noscript>
 <script>
@@ -76,6 +171,8 @@
     {id:'terminal',name:'Терминал',icon:'>_'},
     {id:'about',name:'Обо мне',icon:'ID'},
     {id:'settings',name:'Настройки',icon:'⚙'},
+    {id:'files',name:'Файловый менеджер',icon:'▣'},
+    {id:'music',name:'Музыкальный плеер',icon:'♫'},
     ...PROJECTS.map(p=>({id:p.id,name:p.name,icon:p.icon}))
   ];
   const $ = s => document.querySelector(s);
@@ -84,7 +181,7 @@
   const desktop=$('#desktop'), layer=$('#window-layer'), tasks=$('#task-items'), start=$('#start-menu'), launcher=$('#launcher'), searchOverlay=$('#search-overlay');
   let toastTimer;
   function notify(msg) {const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.hidden=true,3600)}
-  function safeTheme(theme) {return ['cyan','violet','amber'].includes(theme)?theme:'cyan'}
+  function safeTheme(theme) {return ['cyan','violet','amber','rose'].includes(theme)?theme:'cyan'}
   try {state.theme=safeTheme(localStorage.getItem('takura-theme'));state.grid=localStorage.getItem('takura-grid')!=='off'} catch(_) {}
   document.documentElement.dataset.theme=state.theme;desktop.classList.toggle('no-grid',!state.grid);
   function updateClock() {const date=new Date();const opts={hour:'2-digit',minute:'2-digit'};const time=date.toLocaleTimeString('ru-RU',opts);$('#clock').textContent=time;$('#clock-bottom').textContent=time}
@@ -98,13 +195,346 @@
   function closeWindow(id){const win=state.windows.get(id);if(!win)return;win.remove();state.windows.delete(id);updateTasks()}
   function toggleMax(win){win.classList.toggle('maximized');if(win.classList.contains('maximized'))notify('Окно развернуто')}
   function draggable(win,bar){let drag=null;bar.addEventListener('pointerdown',(e)=>{if(e.target.closest('button')||window.matchMedia('(max-width:760px)').matches||win.classList.contains('maximized'))return;if(e.button!==0)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY,l:win.offsetLeft,t:win.offsetTop};bar.setPointerCapture(e.pointerId)});bar.addEventListener('pointermove',(e)=>{if(!drag||e.pointerId!==drag.id)return;const parent=$('#main-area');const x=Math.max(0,Math.min(parent.clientWidth-win.offsetWidth,drag.l+e.clientX-drag.x));const y=Math.max(0,Math.min(parent.clientHeight-win.offsetHeight,drag.t+e.clientY-drag.y));win.style.left=x+'px';win.style.top=y+'px'});const stop=()=>drag=null;bar.addEventListener('pointerup',stop);bar.addEventListener('pointercancel',stop);bar.addEventListener('dblclick',(e)=>{if(!e.target.closest('button'))toggleMax(win)})}
-  function openApp(id){hideStart();hideSearch();const old=state.windows.get(id);if(old){old.classList.remove('minimized');focusWindow(id);updateTasks();return}const a=APPS.find(x=>x.id===id);if(!a){notify('Приложение не найдено');return}const win=el('section','window');win.setAttribute('role','dialog');win.setAttribute('aria-label',a.name);win.dataset.window=id;const parent=$('#main-area');const mobile=window.matchMedia('(max-width:760px)').matches;const offset=(state.seq++%5)*28;win.style.left=mobile?'5px':Math.min(175+offset,Math.max(8,parent.clientWidth-735))+'px';win.style.top=mobile?'5px':(37+offset)+'px';win.style.zIndex=++state.z;const bar=el('header','winbar');const symbol=el('span','win-icon',a.icon),title=el('span','win-title',a.name),buttons=el('div','win-actions');const minimize=el('button','win-btn','−');minimize.title='Свернуть';minimize.setAttribute('aria-label','Свернуть окно');minimize.addEventListener('click',()=>{win.classList.add('minimized');win.classList.remove('focused');updateTasks()});const max=el('button','win-btn','□');max.title='Развернуть';max.setAttribute('aria-label','Развернуть окно');max.addEventListener('click',()=>toggleMax(win));const close=el('button','win-btn close','×');close.title='Закрыть';close.setAttribute('aria-label','Закрыть окно');close.addEventListener('click',()=>closeWindow(id));buttons.append(minimize,max,close);bar.append(symbol,title,buttons);const body=el('div','window-body');win.append(bar,body);layer.append(win);state.windows.set(id,win);draggable(win,bar);win.addEventListener('pointerdown',()=>focusWindow(id));if(id==='welcome')renderWelcome(body);else if(id==='projects')renderProjects(body);else if(id==='terminal'){win.classList.add('terminal-window');renderTerminal(body)}else if(id==='about')renderAbout(body);else if(id==='settings')renderSettings(body);else renderProject(body,PROJECTS.find(p=>p.id===id));focusWindow(id);updateTasks();if(id==='terminal')body.querySelector('input')?.focus()}
-  function renderWelcome(body){const split=el('div','split');const content=el('div');content.innerHTML='<div class="kicker">BOOT SEQUENCE COMPLETE · 2026</div><h2 class="section-title">Добро пожаловать<br>в TAKURA OS_</h2><p class="lead">Это интерактивное портфолио. Открывай приложения, изучай проекты и работай с терминалом. Всё работает прямо в браузере, без установки.</p>';const row=el('div','action-row');row.append(action('▦ Открыть проекты',()=>openApp('projects')),action('>_ Запустить терминал',()=>openApp('terminal'),true));content.append(row);const symbol=el('div','sys-symbol','T');split.append(content,symbol);body.append(split);const note=el('div','notice','Подсказка: перетаскивай окна за заголовок, используй меню «T» внизу или Ctrl+K для быстрого поиска.');body.append(note)}
+  function openApp(id){hideStart();hideSearch();const old=state.windows.get(id);if(old){old.classList.remove('minimized');focusWindow(id);updateTasks();return}const a=APPS.find(x=>x.id===id);if(!a){notify('Приложение не найдено');return}const win=el('section','window');win.setAttribute('role','dialog');win.setAttribute('aria-label',a.name);win.dataset.window=id;const parent=$('#main-area');const mobile=window.matchMedia('(max-width:760px)').matches;const offset=(state.seq++%5)*28;win.style.left=mobile?'5px':Math.min(175+offset,Math.max(8,parent.clientWidth-735))+'px';win.style.top=mobile?'5px':(37+offset)+'px';win.style.zIndex=++state.z;const bar=el('header','winbar');const symbol=el('span','win-icon',a.icon),title=el('span','win-title',a.name),buttons=el('div','win-actions');const minimize=el('button','win-btn','−');minimize.title='Свернуть';minimize.setAttribute('aria-label','Свернуть окно');minimize.addEventListener('click',()=>{win.classList.add('minimized');win.classList.remove('focused');updateTasks()});const max=el('button','win-btn','□');max.title='Развернуть';max.setAttribute('aria-label','Развернуть окно');max.addEventListener('click',()=>toggleMax(win));const close=el('button','win-btn close','×');close.title='Закрыть';close.setAttribute('aria-label','Закрыть окно');close.addEventListener('click',()=>closeWindow(id));buttons.append(minimize,max,close);bar.append(symbol,title,buttons);const body=el('div','window-body');win.append(bar,body);layer.append(win);state.windows.set(id,win);draggable(win,bar);win.addEventListener('pointerdown',()=>focusWindow(id));if(id==='welcome')renderWelcome(body);else if(id==='projects')renderProjects(body);else if(id==='terminal'){win.classList.add('terminal-window');renderTerminalV3(body)}else if(id==='files'){win.classList.add('files-window');renderFiles(body)}else if(id==='music'){win.classList.add('music-window');renderMusic(body)}else if(id==='about')renderAbout(body);else if(id==='settings')renderSettingsV3(body);else renderProject(body,PROJECTS.find(p=>p.id===id));focusWindow(id);updateTasks();if(id==='terminal')body.querySelector('input')?.focus()}
+  function renderWelcome(body){const split=el('div','split');const content=el('div');content.innerHTML='<div class="kicker">BOOT SEQUENCE COMPLETE · TAKURA OS 3.0</div><h2 class="section-title">Добро пожаловать<br>в TAKURA OS_</h2><p class="lead">Это интерактивное портфолио. Открывай приложения, изучай проекты, редактируй заметки, слушай свою музыку и работай с терминалом. Всё запускается прямо в браузере, без установки.</p>';const row=el('div','action-row');row.append(action('▦ Открыть проекты',()=>openApp('projects')),action('>_ Запустить терминал',()=>openApp('terminal'),true));content.append(row);const symbol=el('div','sys-symbol','T');split.append(content,symbol);body.append(split);const note=el('div','notice','Подсказка: перетаскивай окна за заголовок, используй меню «T» внизу или Ctrl+K для быстрого поиска. Заметки хранятся локально.');body.append(note)}
   function renderProjects(body){body.innerHTML='<div class="kicker">APPLICATION LIBRARY / 04 ITEMS</div><h2 class="section-title">Мои проекты<span style="color:var(--accent)">.</span></h2><p class="lead">Каждый проект можно открыть как отдельное приложение. Демоверсии подключены только там, где есть известные рабочие адреса.</p>';const grid=el('div','projects-grid');PROJECTS.forEach(p=>{const card=el('button','project-card');const top=el('div','card-top');top.append(el('span','card-icon',p.icon),el('span','card-state',p.status));card.append(top,el('h3','',p.name),el('p','',p.short));card.addEventListener('click',()=>openApp(p.id));grid.append(card)});body.append(grid)}
   function renderProject(body,p){if(!p)return;const banner=el('div','detail-banner');banner.append(el('span','detail-logo',p.icon));const info=el('div');info.append(el('small','',p.type+' / '+p.status),el('h2','',p.name));banner.append(info);body.append(banner);body.append(el('div','detail-section','// ОБЗОР'));body.append(el('p','detail-body',p.description));const tags=el('div','tag-row');p.tags.forEach(t=>tags.append(el('span','tag',t)));body.append(tags);body.append(el('div','detail-section','// ДОСТУП'));const links=el('div','action-row');p.links.forEach(l=>{const a=el('a','action',l.label+' ↗');a.href=l.url;a.target='_blank';a.rel='noopener noreferrer';links.append(a)});links.append(action('← Все проекты',()=>openApp('projects'),true));body.append(links);if(!p.links.length)body.append(el('div','notice','Публичная демоверсия пока не подключена. Когда проект будет готов, сюда можно добавить ссылку на релиз или репозиторий.'))}
   function renderAbout(body){body.innerHTML='<div class="kicker">IDENTITY / TAKURA IMPARIS</div><h2 class="section-title">Привет. Я Takura.</h2><p class="lead">Разрабатываю программные инструменты, экспериментирую с интерфейсами и инженерными решениями, а ещё создаю интерактивные истории. Здесь собраны мои проекты — от университетской навигации до хоррор-игр.</p>';const tiles=el('div','about-tiles');[['SOFTWARE','Python, Flutter, Web'],['ENGINEERING','Расчёты и моделирование'],['STORYTELLING','Интерактивные истории']].forEach(([h,t])=>{const tile=el('div','tile');tile.append(el('strong','',h),el('p','',t));tiles.append(tile)});body.append(tiles);const row=el('div','action-row');const gh=el('a','action','GitHub профиль ↗');gh.href=GITHUB_PROFILE;gh.target='_blank';gh.rel='noopener noreferrer';row.append(gh,action('Смотреть проекты',()=>openApp('projects'),true));body.append(row);body.append(el('div','notice','Это публичная витрина проектов. Секретные ключи, данные пользователей и приватный код сюда не выкладываются.'))}
   function renderSettings(body){body.innerHTML='<div class="kicker">CONTROL PANEL / PERSONALIZATION</div><h2 class="section-title">Настройки.</h2><p class="lead">Меняй внешний вид своей OS. Настройки темы сохраняются в браузере.</p>';const group=el('div','settings-group');group.append(el('h3','','Цвет акцента'));const sw=el('div','swatches');[['cyan','Mint Neon'],['violet','Night Violet'],['amber','Burnt Amber']].forEach(([value,label])=>{const b=el('button','swatch'+(state.theme===value?' selected':''),label);b.addEventListener('click',()=>{setTheme(value);sw.querySelectorAll('.swatch').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});sw.append(b)});group.append(sw);body.append(group);const g2=el('div','settings-group');g2.append(el('h3','','Рабочий стол'));const label=el('label','toggle');const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=state.grid;checkbox.addEventListener('change',()=>{state.grid=checkbox.checked;desktop.classList.toggle('no-grid',!state.grid);persist('takura-grid',state.grid?'on':'off')});label.append(checkbox,document.createTextNode('Показывать сетку фона'));g2.append(label);body.append(g2);body.append(el('div','notice','TAKURA OS работает как статический сайт GitHub Pages. Терминал — безопасная имитация команд, а не доступ к компьютеру посетителя.'))}
   function renderTerminal(body){const feed=el('div','terminal-feed');feed.setAttribute('aria-label','История терминала');const form=el('form','terminal-form');const prompt=el('span','prompt','takura@os:~$');const input=el('input','terminal-input');input.autocomplete='off';input.spellcheck=false;input.setAttribute('aria-label','Команда терминала');input.placeholder='help';form.append(prompt,input,el('span','terminal-hint','↵'));body.append(feed,form);const hist=[];let cursor=0;function print(value,cls=''){const line=el('div','term-line '+cls,value);feed.append(line);feed.scrollTop=feed.scrollHeight}print('TAKURA OS [v2.0] — web shell','dim');print('Добро пожаловать, чумба. Напиши help для списка команд.','');print('','');form.addEventListener('submit',e=>{e.preventDefault();const cmd=input.value.trim();if(!cmd)return;print('takura@os:~$ '+cmd,'command');hist.push(cmd);cursor=hist.length;input.value='';run(cmd)});input.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){e.preventDefault();cursor=Math.max(0,cursor-1);input.value=hist[cursor]||''}else if(e.key==='ArrowDown'){e.preventDefault();cursor=Math.min(hist.length,cursor+1);input.value=hist[cursor]||''}});function run(raw){const parts=raw.split(/\s+/);const command=parts[0].toLowerCase();const arg=parts.slice(1).join(' ').toLowerCase();switch(command){case'help':print('help        список команд\nwhoami      кто я\nabout       обо мне\nprojects    список проектов\nls          установленные приложения\nopen NAME   открыть приложение (uninav, unicav, haunted, morse, projects, about, settings)\ngithub      открыть профиль GitHub\ntheme X     сменить тему (cyan / violet / amber)\ndate        локальное время\necho TEXT   вывести текст\nclear       очистить терминал\nneofetch    информация о системе');break;case'whoami':print('Takura Imparis // разработка · инженерия · интерактивные истории');break;case'about':print('TAKURA OS — интерактивное портфолио. Читай проекты и запускай приложения.');break;case'ls':case'projects':print(PROJECTS.map(p=>`${p.icon}  ${p.name} — ${p.status}`).join('\n'));break;case'open':{const aliases={morse:'morse',haunted:'haunted',hauntedos:'haunted',unicav:'unicav',uninav:'uninav',project:'projects',projects:'projects',about:'about',settings:'settings',terminal:'terminal',welcome:'welcome'};const name=aliases[arg.replaceAll(/[^a-z]/g,'')];if(name){openApp(name);print('Запуск '+name+'…')}else print('Неизвестное приложение. Попробуй ls или open uninav','error');break}case'github':window.open(GITHUB_PROFILE,'_blank','noopener,noreferrer');print('Открываю GitHub в новой вкладке…');break;case'theme':if(['cyan','violet','amber'].includes(arg)){setTheme(arg);print('Тема: '+arg)}else print('Варианты: cyan, violet, amber','error');break;case'date':print(new Date().toLocaleString('ru-RU'));break;case'echo':print(raw.slice(raw.indexOf(' ')+1));break;case'clear':feed.replaceChildren();break;case'neofetch':print('  T // TAKURA OS\n  ─────────────────────────\n  User    : Takura Imparis\n  Platform: GitHub Pages / browser\n  Version : 2.0\n  Apps    : '+PROJECTS.length+' projects + utilities\n  Theme   : '+state.theme+'\n  Privacy : no tracking scripts');break;case'sudo':print('Доступ запрещён. Даже корпам сюда нельзя.','error');break;default:print('Команда не найдена: '+command+'. Напиши help.','error')}}}
+  // TAKURA OS 3.0: browser-only virtual filesystem, local music and personalization.
+  const STARTED_AT = Date.now();
+  const APP_STORAGE = 'takura-os-v3-notes';
+  const FOLDERS = ['/', '/projects', '/notes', '/system'];
+  const virtual = {folder:'/', file:null, cwd:'/'};
+  const readSetting = (key,fallback) => {try {const v=localStorage.getItem(key);return v===null?fallback:v} catch(_) {return fallback}};
+  const preferences = {
+    wallpaper: ['grid','nebula','sunset','void'].includes(readSetting('takura-wallpaper','grid'))?readSetting('takura-wallpaper','grid'):'grid',
+    glow: readSetting('takura-glow','on')!=='off',
+    compact: readSetting('takura-compact','off')==='on',
+    boot: readSetting('takura-boot','on')!=='off'
+  };
+  let notes = {};
+  try {
+    const raw = JSON.parse(readSetting(APP_STORAGE, '{}'));
+    if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+      for (const [name, content] of Object.entries(raw)) {
+        if (/^\/notes\/[^/]{1,75}\.(txt|md|json)$/i.test(name) && typeof content==='string') notes[name] = content.slice(0,60000);
+      }
+    }
+  } catch(_) {}
+  function saveNotes(next) {
+    try {localStorage.setItem(APP_STORAGE, JSON.stringify(next));notes=next;return true}
+    catch(_) {notify('Не удалось сохранить: хранилище браузера переполнено или отключено');return false}
+  }
+  function applyPreferences() {
+    desktop.dataset.wallpaper=preferences.wallpaper;
+    desktop.classList.toggle('reduce-glow',!preferences.glow);
+    desktop.classList.toggle('compact',preferences.compact);
+  }
+  applyPreferences();
+  function setWallpaper(value) {
+    if (!['grid','nebula','sunset','void'].includes(value))return false;
+    preferences.wallpaper=value;persist('takura-wallpaper',value);applyPreferences();notify('Обои: '+value);return true;
+  }
+  const staticFiles = () => {
+    const files = {
+      '/system/README.txt':'TAKURA OS 3.0\n\nИнтерактивное портфолио на GitHub Pages.\nФайловый менеджер работает с виртуальными папками.\nЗаметки сохраняются только в хранилище этого браузера.\nМузыка выбирается с устройства и не загружается на сервер.\nВстроенный терминал — безопасная имитация команд.',
+      '/system/commands.txt':'help, whoami, about, projects, ls, cd, pwd, tree, cat, touch, write, rm, open, files, music, play, pause, next, theme, wallpaper, date, uptime, neofetch, clear, history, reboot',
+      '/system/version.txt':'TAKURA OS 3.0\nRuntime: browser / no backend\nHost: GitHub Pages compatible',
+    };
+    for (const project of PROJECTS) {
+      files['/projects/'+project.id+'.md']='# '+project.name+'\n\nСтатус: '+project.status+'\n\n'+project.description+'\n\nТехнологии: '+project.tags.join(', ')+ '\n' + project.links.map(l=>l.label+': '+l.url).join('\n');
+    }
+    return files;
+  };
+  function normalizePath(path, cwd=virtual.cwd) {
+    const bits=(path.startsWith('/')?path:(cwd==='/'?'':cwd)+'/'+path).split('/');
+    const result=[];
+    for(const bit of bits){if(!bit||bit==='.')continue;if(bit==='..')result.pop();else result.push(bit)}
+    return '/'+result.join('/');
+  }
+  function getFileContent(path){return Object.prototype.hasOwnProperty.call(notes,path)?notes[path]:staticFiles()[path]}
+  function getFolderContents(folder) {
+    const files={...staticFiles(),...notes};
+    if (folder==='/')return FOLDERS.filter(p=>p!=='/').map(p=>({name:p.slice(1),path:p,isFolder:true}));
+    return Object.keys(files).filter(p=>p.startsWith(folder+'/') && p.slice(folder.length+1).indexOf('/')<0).sort().map(p=>({name:p.split('/').pop(),path:p,isFolder:false,editable:p.startsWith('/notes/')}));
+  }
+  function notePath(name){
+    let value=String(name||'').trim().replace(/\\/g,'/');
+    if(value.includes('/'))return null;
+    if(!/\.(txt|md|json)$/i.test(value))value+='.txt';
+    if(!/^[^\x00-\x1f<>:"|?*\/]{1,75}\.(txt|md|json)$/i.test(value)||value.startsWith('.'))return null;
+    return '/notes/'+value;
+  }
+  function createNote(name, content='') {
+    const path=notePath(name);
+    if(!path){notify('Имя файла недопустимо');return null}
+    if(Object.prototype.hasOwnProperty.call(notes,path)){notify('Файл с таким именем уже есть');return null}
+    if(Object.keys(notes).length>=35){notify('Максимум 35 заметок');return null}
+    if(!saveNotes({...notes,[path]:String(content).slice(0,60000)}))return null;
+    return path;
+  }
+  function downloadText(filename,content) {
+    const blob=new Blob([content],{type:'text/plain;charset=utf-8'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  function refreshFiles() {
+    const win=state.windows.get('files');
+    if(win && !win.classList.contains('minimized'))renderFiles(win.querySelector('.window-body'));
+  }
+  function renderFiles(body) {
+    body.replaceChildren();
+    const shell=el('div','file-shell'),nav=el('aside','file-nav'),content=el('section','file-content');
+    shell.append(nav,content);body.append(shell);
+    function navigate(folder){if(!FOLDERS.includes(folder))return;virtual.folder=folder;virtual.file=null;paint()}
+    function paint() {
+      nav.replaceChildren();nav.append(el('h3','','// КАТАЛОГИ'));
+      for(const [path,label,icon] of [['/','Рабочий стол','⌂'],['/projects','Проекты','▦'],['/notes','Заметки','✎'],['/system','Система','⚙']]) {
+        const btn=el('button','file-dir'+(virtual.folder===path?' selected':''),icon+' '+label);
+        btn.addEventListener('click',()=>navigate(path));nav.append(btn);
+      }
+      content.replaceChildren();
+      const bar=el('div','file-toolbar');bar.append(el('span','file-path','TAKURA:/'+(virtual.folder==='/'?'':virtual.folder.slice(1))));
+      const back=el('button','mini-btn','← Папка');back.disabled=!virtual.file;back.addEventListener('click',()=>{virtual.file=null;paint()});bar.append(back);
+      if(virtual.folder==='/notes') {
+        const add=el('button','mini-btn','＋ Заметка');add.addEventListener('click',()=>{
+          const name=prompt('Имя заметки (например, ideas.txt):','new-note.txt');if(name===null)return;
+          const p=createNote(name);if(p){virtual.file=p;paint();notify('Заметка создана')}
+        });bar.append(add);
+        const importer=el('input');importer.type='file';importer.accept='.txt,.md,.json,text/plain,application/json';importer.hidden=true;
+        importer.addEventListener('change',async()=>{const file=importer.files?.[0];if(!file)return;if(file.size>100000){notify('Файл слишком большой (максимум 100 КБ)');return}try{const text=await file.text();const p=createNote(file.name,text);if(p){virtual.file=p;paint();notify('Текст импортирован в заметки')}}catch(_){notify('Не удалось прочитать файл')}});
+        const imp=el('button','mini-btn','⇧ Импорт');imp.addEventListener('click',()=>importer.click());bar.append(imp,importer);
+      }
+      content.append(bar);
+      const main=el('div','file-main');content.append(main);
+      if(virtual.file){paintEditor(main);return}
+      if(virtual.folder==='/'){main.append(el('div','kicker','VIRTUAL FILESYSTEM / LOCAL'));main.append(el('h2','section-title','Проводник.'));main.append(el('p','file-muted','Это виртуальные каталоги. Заметки доступны только в этом браузере и не синхронизируются между устройствами.'))}
+      else main.append(el('div','file-muted','Каталог '+virtual.folder+' · '+getFolderContents(virtual.folder).length+' элементов'));
+      const list=el('div','file-list');list.style.marginTop='15px';
+      for(const item of getFolderContents(virtual.folder)) {
+        const b=el('button','file-entry');b.append(el('span','file-symbol',item.isFolder?'▣':item.editable?'✎':'▤'));
+        const txt=el('span');txt.append(el('div','file-name',item.name),el('div','file-desc',item.isFolder?'Папка':item.editable?'Локальная заметка · редактируемая':'Системный файл · только чтение'));b.append(txt);
+        b.addEventListener('click',()=>{if(item.isFolder)navigate(item.path);else{virtual.file=item.path;paint()}});list.append(b);
+      }
+      if(!getFolderContents(virtual.folder).length)list.append(el('p','file-muted','Здесь пока пусто. Создай заметку или импортируй текстовый файл.'));
+      main.append(list);
+    }
+    function paintEditor(main) {
+      const path=virtual.file, editable=path.startsWith('/notes/');
+      const contentText=getFileContent(path);
+      if(typeof contentText!=='string'){virtual.file=null;paint();return}
+      const editor=el('div','file-editor');const heading=el('h3','',path.split('/').pop());const field=el('textarea');field.value=contentText;field.readOnly=!editable;field.setAttribute('aria-label','Содержимое файла');
+      const actions=el('div','editor-actions');const stateText=el('span','file-muted',editable?'Изменения нужно сохранить вручную':'Только чтение');
+      if(editable) {
+        field.addEventListener('input',()=>{stateText.textContent='● Не сохранено';stateText.classList.add('unsaved')});
+        const save=el('button','mini-btn','Сохранить');save.addEventListener('click',()=>{if(field.value.length>60000){notify('Слишком большая заметка');return}if(saveNotes({...notes,[path]:field.value})){stateText.textContent='✓ Сохранено в браузере';stateText.classList.remove('unsaved');notify('Заметка сохранена')}});actions.append(save);
+        const del=el('button','mini-btn','Удалить');del.addEventListener('click',()=>{if(!confirm('Удалить '+path.split('/').pop()+'?'))return;const next={...notes};delete next[path];if(saveNotes(next)){virtual.file=null;paint();notify('Заметка удалена')}});actions.append(del);
+      }
+      const download=el('button','mini-btn','↓ Скачать файл');download.addEventListener('click',()=>downloadText(path.split('/').pop(),field.value));actions.append(download);
+      editor.append(heading,field,actions,stateText);main.append(editor);
+    }
+    paint();
+  }
+
+  // Local-only audio library. No tracks are shipped or uploaded.
+  const music = {audio:new Audio(), tracks:[], index:-1, repeat:false};
+  music.audio.preload='metadata';music.audio.volume=.72;
+  function currentTrack(){return music.tracks[music.index]||null}
+  function musicLoad(index, autoplay=false) {
+    if(index<0 || index>=music.tracks.length)return;
+    music.index=index;music.audio.pause();music.audio.src=music.tracks[index].url;music.audio.load();
+    if(autoplay)musicPlay();refreshMusic();
+  }
+  function musicPlay() {
+    if(music.index<0){notify('Сначала выбери свои аудиофайлы');return}
+    const result=music.audio.play();
+    if(result && typeof result.catch==='function')result.catch(()=>notify('Воспроизведение заблокировано браузером или формат не поддерживается'));
+    refreshMusicControls();
+  }
+  function musicPause(){music.audio.pause();refreshMusicControls()}
+  function musicNext(){if(music.tracks.length){musicLoad((music.index+1)%music.tracks.length,true)}}
+  function musicPrev(){if(music.tracks.length){if(music.audio.currentTime>3){music.audio.currentTime=0;return}musicLoad((music.index-1+music.tracks.length)%music.tracks.length,true)}}
+  function musicAddFiles(fileList) {
+    const arr=Array.from(fileList||[]);let added=0;
+    for(const file of arr) {
+      if(music.tracks.length>=50)break;
+      if(!(/\.(mp3|wav|ogg|m4a|aac|flac|opus)$/i.test(file.name) || file.type.startsWith('audio/')))continue;
+      if(file.size>250*1024*1024)continue;
+      music.tracks.push({name:file.name,url:URL.createObjectURL(file)});added++;
+    }
+    if(added && music.index<0)musicLoad(0,false);
+    refreshMusic();notify(added?'Добавлено треков: '+added:'Подходящих аудиофайлов не найдено');
+  }
+  function removeAllTracks(){music.audio.pause();music.audio.removeAttribute('src');music.audio.load();music.tracks.forEach(t=>URL.revokeObjectURL(t.url));music.tracks=[];music.index=-1;refreshMusic()}
+  function refreshMusic(){const w=state.windows.get('music');if(w)renderMusic(w.querySelector('.window-body'))}
+  function timeLabel(sec){return Number.isFinite(sec)?Math.floor(sec/60)+':'+String(Math.floor(sec%60)).padStart(2,'0'):'0:00'}
+  function refreshMusicControls(){
+    const w=state.windows.get('music');if(!w)return;
+    const play=w.querySelector('[data-music="play"]');if(play)play.textContent=music.audio.paused?'▶':'Ⅱ';
+    const track=w.querySelector('[data-music="track"]');if(track)track.textContent=currentTrack()?.name||'Нет аудиофайлов';
+    const slider=w.querySelector('[data-music="progress"]');if(slider){slider.max=String(Number.isFinite(music.audio.duration)?music.audio.duration:100);slider.value=String(music.audio.currentTime||0)}
+    const now=w.querySelector('[data-music="current"]');if(now)now.textContent=timeLabel(music.audio.currentTime);
+    const duration=w.querySelector('[data-music="duration"]');if(duration)duration.textContent=timeLabel(music.audio.duration);
+  }
+  music.audio.addEventListener('timeupdate',refreshMusicControls);
+  music.audio.addEventListener('loadedmetadata',refreshMusicControls);
+  music.audio.addEventListener('play',refreshMusicControls);
+  music.audio.addEventListener('pause',refreshMusicControls);
+  music.audio.addEventListener('ended',()=>{
+    if(music.repeat){music.audio.currentTime=0;musicPlay()}
+    else if(music.index<music.tracks.length-1)musicNext();
+    else refreshMusicControls();
+  });
+  window.addEventListener('beforeunload',()=>music.tracks.forEach(t=>URL.revokeObjectURL(t.url)));
+  function renderMusic(body){
+    body.replaceChildren();const shell=el('div','music-shell'),now=el('div','music-now'),right=el('div','music-right');
+    now.append(el('div','album-art','♫'));
+    const track=el('div','music-track',currentTrack()?.name||'Нет аудиофайлов');track.dataset.music='track';
+    const sub=el('div','music-sub','LOCAL AUDIO / NO UPLOAD');now.append(track,sub);shell.append(now,right);body.append(shell);
+    const drop=el('div','music-drop','Перетащи аудиофайлы сюда или нажми «Добавить треки»');
+    drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('is-dragging')});drop.addEventListener('dragleave',()=>drop.classList.remove('is-dragging'));
+    drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('is-dragging');musicAddFiles(e.dataTransfer.files)});
+    const input=el('input');input.type='file';input.multiple=true;input.accept='audio/*,.mp3,.wav,.ogg,.m4a,.flac,.opus';input.hidden=true;input.addEventListener('change',()=>{musicAddFiles(input.files);input.value=''});
+    const add=el('button','mini-btn','＋ Добавить треки');add.addEventListener('click',()=>input.click());
+    const clear=el('button','mini-btn','Очистить список');clear.disabled=!music.tracks.length;clear.addEventListener('click',removeAllTracks);
+    const row=el('div','picker-row');row.append(add,clear,input);right.append(drop,row);
+    const controls=el('div','music-controls');
+    const prev=el('button','mini-btn','⏮'),play=el('button','mini-btn play-btn',music.audio.paused?'▶':'Ⅱ'),next=el('button','mini-btn','⏭'),loop=el('button','mini-btn',music.repeat?'↻ Повтор: вкл':'↻ Повтор: выкл');
+    play.dataset.music='play';prev.setAttribute('aria-label','Предыдущий трек');play.setAttribute('aria-label','Воспроизвести или поставить на паузу');next.setAttribute('aria-label','Следующий трек');
+    prev.addEventListener('click',musicPrev);play.addEventListener('click',()=>music.audio.paused?musicPlay():musicPause());next.addEventListener('click',musicNext);
+    loop.addEventListener('click',()=>{music.repeat=!music.repeat;loop.textContent=music.repeat?'↻ Повтор: вкл':'↻ Повтор: выкл'});
+    controls.append(prev,play,next,loop);right.append(controls);
+    const timeline=el('div','music-timeline');const clock1=el('span','','0:00'),clock2=el('span','','0:00'),progress=el('input');clock1.dataset.music='current';clock2.dataset.music='duration';progress.dataset.music='progress';progress.type='range';progress.min='0';progress.max='100';progress.step='.1';progress.value='0';progress.setAttribute('aria-label','Позиция воспроизведения');progress.addEventListener('input',()=>{if(Number.isFinite(music.audio.duration))music.audio.currentTime=Number(progress.value)});timeline.append(clock1,progress,clock2);right.append(timeline);
+    const volume=el('label','music-volume','Громкость');const vol=el('input');vol.type='range';vol.min='0';vol.max='1';vol.step='.05';vol.value=String(music.audio.volume);vol.setAttribute('aria-label','Громкость');vol.addEventListener('input',()=>music.audio.volume=Number(vol.value));volume.append(vol);right.append(volume);
+    right.append(el('div','kicker','PLAYLIST / '+music.tracks.length+' TRACKS'));
+    const playlist=el('div','music-playlist');
+    music.tracks.forEach((t,index)=>{
+      const b=el('button','music-item'+(index===music.index?' active':''));b.append(el('span','',String(index+1).padStart(2,'0')+'  '+t.name));if(index===music.index)b.append(el('span','','●'));
+      b.addEventListener('click',()=>musicLoad(index,true));playlist.append(b);
+    });
+    if(!music.tracks.length)playlist.append(el('div','file-muted','Здесь появятся выбранные тобой треки. После обновления страницы их потребуется выбрать снова.'));
+    right.append(playlist);refreshMusicControls();
+  }
+
+  function renderSettingsV3(body) {
+    body.replaceChildren();body.append(el('div','kicker','CONTROL PANEL / V3 PERSONALIZATION'),el('h2','section-title','Настройки.'),el('p','lead','Персонализируй рабочий стол. Настройки сохраняются в этом браузере.'));
+    const themeBox=el('div','settings-group');themeBox.append(el('h3','','Цвет системы'));
+    const themeRow=el('div','picker-row');
+    for(const [theme,name] of [['cyan','Mint Neon'],['violet','Night Violet'],['amber','Burnt Amber'],['rose','Neon Rose']]) {
+      const b=el('button','picker'+(state.theme===theme?' selected':''),name);b.addEventListener('click',()=>{setTheme(theme);renderSettingsV3(body)});themeRow.append(b);
+    }
+    themeBox.append(themeRow);body.append(themeBox);
+    const wallBox=el('div','settings-group');wallBox.append(el('h3','','Обои рабочего стола'));
+    const walls=el('div','picker-row');
+    for(const [wall,name] of [['grid','◈ Grid'],['nebula','✦ Nebula'],['sunset','◉ Sunset'],['void','■ Void']]) {
+      const b=el('button','picker'+(preferences.wallpaper===wall?' selected':''),name);b.addEventListener('click',()=>{setWallpaper(wall);renderSettingsV3(body)});walls.append(b);
+    }
+    wallBox.append(walls);body.append(wallBox);
+    const box=el('div','settings-group');box.append(el('h3','','Поведение интерфейса'));
+    for(const [name,label,get,set] of [
+      ['grid','Показывать сетку',()=>state.grid,v=>{state.grid=v;desktop.classList.toggle('no-grid',!v);persist('takura-grid',v?'on':'off')}],
+      ['glow','Неоновое свечение',()=>preferences.glow,v=>{preferences.glow=v;persist('takura-glow',v?'on':'off');applyPreferences()}],
+      ['compact','Компактные элементы',()=>preferences.compact,v=>{preferences.compact=v;persist('takura-compact',v?'on':'off');applyPreferences()}],
+      ['boot','Показывать загрузку при входе',()=>preferences.boot,v=>{preferences.boot=v;persist('takura-boot',v?'on':'off')}]
+    ]) {
+      const labelEl=el('label','toggle');labelEl.style.margin='13px 0';const input=el('input');input.type='checkbox';input.checked=get();input.dataset.setting=name;input.addEventListener('change',()=>{set(input.checked);notify('Настройка сохранена')});labelEl.append(input,document.createTextNode(label));box.append(labelEl);
+    }
+    const actions=el('div','settings-actions');actions.append(action('↻ Перезапустить интерфейс',()=>{runBoot(true);notify('Система перезапущена')}),action('Сбросить оформление',()=>{
+      if(!confirm('Сбросить оформление? Заметки при этом сохранятся.'))return;
+      state.grid=true;desktop.classList.remove('no-grid');persist('takura-grid','on');setTheme('cyan');setWallpaper('grid');preferences.glow=true;preferences.compact=false;preferences.boot=true;
+      ['takura-glow','takura-compact','takura-boot'].forEach(k=>{try{localStorage.removeItem(k)}catch(_){}});
+      applyPreferences();renderSettingsV3(body);notify('Оформление сброшено');
+    },true));box.append(actions);body.append(box);
+    body.append(el('div','notice','Файлы в «Заметках» хранятся только в текущем браузере. Музыка воспроизводится локально. Ни эти данные, ни аудиофайлы не отправляются на GitHub Pages.'));
+  }
+
+  function renderTerminalV3(body) {
+    body.replaceChildren();const feed=el('div','terminal-feed');feed.setAttribute('aria-label','История терминала');const form=el('form','terminal-form');const prompt=el('span','prompt','takura@os:/$'),input=el('input','terminal-input');input.autocomplete='off';input.spellcheck=false;input.setAttribute('aria-label','Команда терминала');input.placeholder='help';form.append(prompt,input,el('span','terminal-hint','↵'));body.append(feed,form);
+    let history=[],cursor=0;const print=(v,cls='')=>{feed.append(el('div','term-line '+cls,String(v)));feed.scrollTop=feed.scrollHeight};
+    const refreshPrompt=()=>prompt.textContent='takura@os:'+virtual.cwd+'$';refreshPrompt();
+    print('TAKURA OS [v3.0] — virtual shell','dim');print('Введи help — покажу команды. Твои файлы лежат в виртуальных папках.');print('');
+    form.addEventListener('submit',e=>{e.preventDefault();const raw=input.value.trim();if(!raw)return;print(prompt.textContent+' '+raw,'command');history.push(raw);cursor=history.length;input.value='';run(raw);refreshPrompt()});
+    input.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){e.preventDefault();cursor=Math.max(0,cursor-1);input.value=history[cursor]||''}else if(e.key==='ArrowDown'){e.preventDefault();cursor=Math.min(history.length,cursor+1);input.value=history[cursor]||''}});
+    function run(raw) {
+      const tokens=raw.match(/(?:[^\s"]+|"[^"]*")+/g)||[];
+      const cmd=(tokens[0]||'').toLowerCase(),arg=tokens.slice(1).join(' ').replace(/^"|"$/g,'');
+      const key=arg.toLowerCase();
+      switch(cmd) {
+        case 'help':print(`ДОСТУПНЫЕ КОМАНДЫ\nhelp             помощь\nwhoami / about   информация\nprojects         список проектов\nopen NAME        открыть приложение\nls [PATH]        список виртуальных файлов\npwd              текущая папка\ncd PATH          перейти в папку\ntree             дерево каталогов\ncat FILE         прочитать файл\ntouch NAME       создать заметку (/notes)\nwrite NAME TEXT  записать текст в заметку\nrm NAME          удалить заметку с подтверждением\nfiles / music    открыть приложения\nplay / pause / next   плеер\ntheme NAME       cyan, violet, amber, rose\nwallpaper NAME   grid, nebula, sunset, void\nuptime / neofetch   система\nhistory / clear  история / очистить\ndate / echo TEXT часы / вывод текста\ngithub / reboot  профиль / загрузка`);break;
+        case 'whoami':print('Takura Imparis // developer, engineer, interactive storyteller');break;
+        case 'about':print('TAKURA OS 3.0 — интерактивное портфолио. Нет доступа к настоящим файлам компьютера.');break;
+        case 'projects':print(PROJECTS.map(p=>p.icon+'  '+p.name+' — '+p.status).join('\n'));break;
+        case 'open':{
+          const aliases={morse:'morse',haunted:'haunted',hauntedos:'haunted',unicav:'unicav',uninav:'uninav',projects:'projects',project:'projects',about:'about',settings:'settings',terminal:'terminal',welcome:'welcome',files:'files',file:'files',explorer:'files',music:'music',player:'music'};
+          const app=aliases[key.replace(/[^a-z]/g,'')];if(app){openApp(app);print('Запуск '+app+'…')}else print('Неизвестное приложение. Введи ls или help','error');break;
+        }
+        case 'files':openApp('files');print('Файловый менеджер открыт');break;
+        case 'music':openApp('music');print('Плеер открыт');break;
+        case 'ls':{
+          const path=normalizePath(arg||'.');if(FOLDERS.includes(path))print(getFolderContents(path).map(f=>(f.isFolder?'▣ ':'▤ ')+f.name).join('\n')||'(пусто)');else print('Папка не найдена: '+path,'error');break;
+        }
+        case 'pwd':print(virtual.cwd);break;
+        case 'cd':{
+          const path=normalizePath(arg||'/');if(FOLDERS.includes(path)){virtual.cwd=path;print('→ '+path)}else print('Нет такой папки: '+path,'error');break;
+        }
+        case 'tree':print(FOLDERS.map(p=>p==='/'?'/':p+'\n'+getFolderContents(p).map(f=>'  └─ '+f.name).join('\n')).join('\n'));break;
+        case 'cat':{
+          if(!arg){print('Пример: cat /system/README.txt','error');break}
+          const path=normalizePath(arg);const content=getFileContent(path);print(typeof content==='string'?content:'Файл не найден: '+path,typeof content==='string'?'':'error');break;
+        }
+        case 'touch':{
+          const name=arg.split('/').pop();if(!name){print('Пример: touch ideas.txt','error');break}
+          if(arg.includes('/')&& !normalizePath(arg).startsWith('/notes/')){print('Создавать заметки можно только в /notes','error');break}
+          const path=createNote(name);print(path?'Создано: '+path:'Не удалось создать файл',path?'':'error');if(path)refreshFiles();break;
+        }
+        case 'write':{
+          const m=raw.match(/^write\s+(\S+)\s+([\s\S]+)$/i);if(!m){print('Используй: write ideas.txt Текст заметки','error');break}
+          const path=notePath(m[1].split('/').pop());if(!path){print('Недопустимое имя','error');break}
+          if(!Object.prototype.hasOwnProperty.call(notes,path)&&Object.keys(notes).length>=35){print('Лимит заметок','error');break}
+          const textValue=m[2].slice(0,60000);if(saveNotes({...notes,[path]:textValue})){print('Записано: '+path);refreshFiles()}else print('Ошибка сохранения','error');break;
+        }
+        case 'rm':{
+          const path=normalizePath(arg);if(!Object.prototype.hasOwnProperty.call(notes,path)){print('Можно удалять только собственные заметки: '+path,'error');break}
+          if(!confirm('Удалить заметку '+path+'?')){print('Отменено');break}
+          const next={...notes};delete next[path];if(saveNotes(next)){print('Удалено: '+path);virtual.file=null;refreshFiles()}break;
+        }
+        case 'play':musicPlay();print(music.index>=0?'Воспроизведение':'Сначала добавь треки в приложении music');break;
+        case 'pause':musicPause();print('Пауза');break;
+        case 'next':musicNext();print('Следующий трек');break;
+        case 'theme':if(['cyan','violet','amber','rose'].includes(key)){setTheme(key);print('Цвет: '+key)}else print('Варианты: cyan, violet, amber, rose','error');break;
+        case 'wallpaper':if(setWallpaper(key))print('Обои: '+key);else print('Варианты: grid, nebula, sunset, void','error');break;
+        case 'github':window.open(GITHUB_PROFILE,'_blank','noopener,noreferrer');print('Открываю GitHub…');break;
+        case 'date':print(new Date().toLocaleString('ru-RU'));break;
+        case 'echo':print(raw.replace(/^echo\s*/i,''));break;
+        case 'history':print(history.map((v,i)=>String(i+1).padStart(2,'0')+' '+v).join('\n'));break;
+        case 'uptime':print('Система активна '+Math.floor((Date.now()-STARTED_AT)/1000)+' сек.');break;
+        case 'neofetch':print(' T // TAKURA OS\n ─────────────────────────\n User    : Takura Imparis\n Version : 3.0\n Runtime : Browser / GitHub Pages\n Apps    : '+APPS.length+'\n Notes   : '+Object.keys(notes).length+'\n Theme   : '+state.theme+'\n Privacy : local-first');break;
+        case 'clear':feed.replaceChildren();break;
+        case 'reboot':runBoot(true);print('Загрузка интерфейса…');break;
+        case 'sudo':print('root недоступен. Даже корпорации не оплатили эту лицензию.','error');break;
+        default:print('Команда не найдена: '+cmd+'. Введи help.','error');
+      }
+    }
+  }
+
+  let bootTimer=null;
+  function runBoot(manual=false) {
+    const boot=$('#boot-overlay'),fill=$('#boot-fill'),label=$('#boot-status');
+    if(!boot)return;
+    clearInterval(bootTimer);
+    if(!manual && (!preferences.boot || window.matchMedia('(prefers-reduced-motion: reduce)').matches)){boot.classList.add('done');return}
+    boot.classList.remove('done');boot.hidden=false;
+    let progress=0;fill.style.width='0%';label.textContent='Подключение модулей…';
+    const labels=['Проверка ядра…','Монтирование виртуальных дисков…','Инициализация терминала…','Загрузка настроек…','Готово.'];
+    bootTimer=setInterval(()=>{
+      progress=Math.min(100,progress+6+Math.random()*9);
+      fill.style.width=progress.toFixed(0)+'%';label.textContent=labels[Math.min(4,Math.floor(progress/23))];
+      if(progress>=100){clearInterval(bootTimer);setTimeout(()=>boot.classList.add('done'),250)}
+    },115);
+  }
+  $('#boot-skip').addEventListener('click',()=>{clearInterval(bootTimer);$('#boot-overlay').classList.add('done')});
+
   function hideStart(){start.hidden=true;launcher.setAttribute('aria-expanded','false')}
   function toggleStart(){const open=start.hidden;start.hidden=!open;launcher.setAttribute('aria-expanded',String(open));if(open)hideSearch()}
   launcher.addEventListener('click',toggleStart);const grid=$('#menu-grid');APPS.filter(a=>a.id!=='welcome').forEach(app=>{const b=el('button','menu-app');b.append(el('span','',app.icon),el('span','',app.name));b.addEventListener('click',()=>openApp(app.id));grid.append(b)});
@@ -113,6 +543,7 @@
   function renderSearch(query){const res=$('#search-results');res.innerHTML='';const list=APPS.filter(a=>a.name.toLowerCase().includes(query.toLowerCase())||a.id.includes(query.toLowerCase()));if(!list.length){res.append(el('div','notice','Ничего не найдено'));return}list.forEach(a=>{const b=el('button','search-result');b.append(el('span','',a.icon));const t=el('span');t.append(el('b','',a.name),el('small','','Открыть приложение'));b.append(t);b.addEventListener('click',()=>openApp(a.id));res.append(b)})}
   $('#search-btn').addEventListener('click',showSearch);$('#search-input').addEventListener('input',e=>renderSearch(e.target.value));$('#search-input').addEventListener('keydown',e=>{if(e.key==='Enter'){const first=$('#search-results .search-result');if(first)first.click()}});searchOverlay.addEventListener('pointerdown',e=>{if(e.target===searchOverlay)hideSearch()});document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();searchOverlay.hidden?showSearch():hideSearch()}if(e.key==='Escape'){hideStart();hideSearch()}});document.addEventListener('pointerdown',e=>{if(!start.hidden&&!start.contains(e.target)&&!launcher.contains(e.target))hideStart()});document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openApp(b.dataset.open)));
   openApp('welcome');
+  runBoot(false);
 })();
 </script>
 </body>
