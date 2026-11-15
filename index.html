@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#071017">
   <meta name="description" content="Takura OS — интерактивное портфолио Takura Imparis: приложения, инженерия и цифровые истории.">
-  <title>TAKURA OS 3.0 — Interactive Portfolio</title>
+  <title>TAKURA OS 3.1 — Interactive Portfolio</title>
   <style>
     :root { color-scheme:dark; --bg:#071017; --panel:#0c171f; --panel2:#12232c; --edge:#29434d; --edge2:#42636b; --text:#e8fff9; --muted:#91aeb1; --accent:#64f9d2; --accent-soft:rgba(100,249,210,.13); --accent-halo:rgba(100,249,210,.23); --warning:#ffc982; --bar:rgba(6,15,21,.87); --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; --sans:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
     :root[data-theme="violet"] { --accent:#c2a3ff;--accent-soft:rgba(194,163,255,.14);--accent-halo:rgba(194,163,255,.25);--edge2:#665481; }
@@ -33,7 +33,7 @@
     @media (max-width:760px) { .topbar {height:50px;padding-inline:12px}.topright .desktop-only {display:none}.main-area {inset:50px 0 74px}.side-rail {top:auto;bottom:21px;left:14px;right:14px;flex-direction:row;flex-wrap:wrap;width:auto;gap:7px;justify-content:center}.desktop-icon {width:79px;min-height:85px;padding:6px 1px}.desktop-icon .glyph {height:42px;width:42px;font-size:18px}.desktop-icon .label {font-size:10px}.hero {left:25px;top:8vh;right:25px}.hero h1 {font-size:clamp(55px,16vw,98px)}.hero p {font-size:13px;max-width:350px}.hero .hero-meta {font-size:9px}.desktop::after {right:-55%;top:15%;width:95vw;height:95vw}.side-info {display:none}.taskbar {height:74px;padding-inline:8px;gap:7px}.task-item {max-width:105px;padding:9px}.task-right {font-size:10px;gap:3px}.task-right .status-label {display:none}.window {left:5px!important;top:5px!important;width:calc(100% - 10px)!important;height:calc(100% - 10px)!important;max-width:none!important;border-radius:11px}.window.maximized {left:5px!important;top:5px!important;width:calc(100% - 10px)!important;height:calc(100% - 10px)!important}.window-body {padding:19px}.split {grid-template-columns:1fr}.sys-symbol {display:none}.projects-grid {grid-template-columns:1fr}.project-card {min-height:150px}.about-tiles {grid-template-columns:1fr}.detail-banner {gap:13px}.detail-logo {flex-basis:58px;height:58px;font-size:27px}.detail-banner h2 {font-size:23px}.terminal-feed {padding:16px;font-size:11px}.terminal-form {padding:11px}.terminal-hint {display:none}}
     @media (max-height:660px) and (min-width:761px) {.hero {top:60px}.side-rail {gap:3px;top:10px}.desktop-icon {min-height:74px}.desktop-icon .glyph {width:39px;height:39px}.side-info {display:none}}
     @media(prefers-reduced-motion:reduce) {*,*::before,*::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-  /* TAKURA OS 3.0: expanded workspace */
+  /* TAKURA OS 3.1: expanded workspace */
 :root[data-theme="rose"]{--accent:#ff8cb5;--accent-soft:rgba(255,140,181,.14);--accent-halo:rgba(255,140,181,.24);--edge2:#87566d}
 .desktop[data-wallpaper="nebula"]{background:radial-gradient(ellipse at 69% 27%,rgba(113,84,244,.32),transparent 42%),radial-gradient(ellipse at 22% 83%,rgba(42,192,178,.23),transparent 42%),#070d18}
 .desktop[data-wallpaper="sunset"]{background:radial-gradient(ellipse at 82% 20%,rgba(255,127,102,.3),transparent 48%),radial-gradient(ellipse at 18% 70%,rgba(137,65,185,.3),transparent 53%),#140e1d}
@@ -119,13 +119,48 @@
  .music-right{min-height:260px;padding:14px}.file-toolbar{padding:8px}.file-main{padding:11px}
 }
 
+
+  /* TAKURA OS 3.1 / Notifications, window controls, about system */
+  .notification-trigger,.task-utility{position:relative;border:1px solid var(--edge2);color:var(--accent);border-radius:9px;background:var(--accent-soft);padding:7px 10px;min-width:38px;font:700 15px var(--mono)}
+  .notification-trigger{display:inline-flex;align-items:center;justify-content:center} .notification-trigger:hover,.task-utility:hover{border-color:var(--accent)}
+  .notification-count{position:absolute;top:-8px;right:-7px;background:#f89d8f;color:#211014;font:700 10px var(--mono);padding:2px 5px;border-radius:99px;min-width:17px;text-align:center}
+  .notification-panel{position:absolute;z-index:121;top:62px;right:16px;width:min(385px,calc(100vw - 32px));max-height:min(540px,calc(100dvh - 145px));display:flex;flex-direction:column;background:rgba(10,22,30,.99);border:1px solid var(--accent);border-radius:15px;box-shadow:0 25px 85px #000b;overflow:hidden}
+  .notice-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 18px 12px}
+  .notice-head strong{font-size:20px;letter-spacing:-.03em}.notice-tools{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px;border-bottom:1px solid var(--edge)}
+  .notification-list{overflow-y:auto;min-height:100px;padding:10px 12px;scrollbar-width:thin}
+  .notification-entry{display:block;width:100%;text-align:left;color:var(--text);background:transparent;border:1px solid transparent;border-radius:9px;padding:11px 12px;margin-bottom:4px}
+  .notification-entry:hover{border-color:var(--edge2);background:var(--accent-soft)}
+  .notification-entry.unread{background:rgba(103,236,204,.055);border-color:var(--edge)}
+  .notification-meta{display:flex;gap:12px;justify-content:space-between;margin-top:5px;color:var(--muted);font:10px var(--mono)}
+  .notification-empty{padding:28px 12px;text-align:center;color:var(--muted)}
+  .notice-foot{border-top:1px solid var(--edge);padding:10px 18px 14px;margin:0;color:var(--muted);font:10px/1.5 var(--mono)}
+  .task-utility{min-width:36px;padding:7px 8px}
+  .window:not(.maximized):not(.snapped-left):not(.snapped-right){resize:both;max-width:calc(100% - 12px);max-height:calc(100% - 12px)}
+  .window.snapped-left,.window.snapped-right{top:8px!important;height:calc(100% - 16px)!important;width:calc(50% - 13px)!important;max-width:none!important;resize:none}
+  .window.snapped-left{left:8px!important}.window.snapped-right{left:calc(50% + 5px)!important}
+  .window.maximized{resize:none}
+  .win-btn.snap{font-size:13px}
+  .sys-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0}
+  .sys-kpi{border:1px solid var(--edge);background:rgba(255,255,255,.025);border-radius:12px;padding:15px;min-width:0}
+  .sys-kpi strong{display:block;font:800 clamp(17px,2.5vw,27px) var(--mono);color:var(--accent);margin-top:6px;overflow-wrap:anywhere}
+  .sys-kpi small{color:var(--muted);font:10px var(--mono);text-transform:uppercase;letter-spacing:.08em}
+  .sys-rows{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .sys-row{display:flex;flex-direction:column;gap:3px;padding:12px 13px;background:rgba(255,255,255,.03);border:1px solid var(--edge);border-radius:9px;overflow-wrap:anywhere}
+  .sys-row small{color:var(--muted);font:10px var(--mono)}.sys-row b{font:12px/1.5 var(--mono);color:var(--text)}
+  .diagnostic-list{display:grid;gap:7px;margin:14px 0}.diagnostic-row{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:10px 12px;background:#10202a;border:1px solid var(--edge);border-radius:8px}
+  .diagnostic-row .diag-label{color:#c8e2e0;font-size:12px}.diag-pass{color:var(--accent);font:700 11px var(--mono)}.diag-warn{color:var(--warning);font:700 11px var(--mono)}
+  .system-hint{color:var(--muted);font:11px/1.65 var(--mono);margin:14px 0 0}
+  @media(max-width:760px){.notification-panel{top:60px;right:9px;width:calc(100vw - 18px);max-height:calc(100dvh - 152px)}.notification-trigger{padding:5px 7px;min-width:33px}.window{resize:none!important}.window.snapped-left,.window.snapped-right{left:5px!important;top:5px!important;width:calc(100% - 10px)!important;height:calc(100% - 10px)!important}.sys-rows{grid-template-columns:1fr}.win-btn.snap{display:none}.sys-kpis{gap:6px}.sys-kpi{padding:10px}}
+  @media(max-width:430px){.topbar{padding:0 9px;gap:5px}.topright{gap:9px}.task-utility{display:none}.win-actions{gap:4px}.win-btn{width:26px}.sys-kpis{grid-template-columns:1fr 1fr}}
+  @media(prefers-reduced-motion:reduce){.window{animation:none}}
+
   </style>
 </head>
 <body>
   <div class="desktop" id="desktop">
     <header class="topbar">
-      <div class="brand"><span class="brand-mark">T</span><span>TAKURA<span class="os">//OS</span></span><span style="font-size:9px;color:#779aa1">V 3.0</span></div>
-      <div class="topright"><span class="desktop-only"><span class="status-dot"></span>SYSTEM ONLINE</span><span class="desktop-only">PORTFOLIO MODE</span><time id="clock">--:--</time></div>
+      <div class="brand"><span class="brand-mark">T</span><span>TAKURA<span class="os">//OS</span></span><span style="font-size:9px;color:#779aa1">V 3.1</span></div>
+      <div class="topright"><span class="desktop-only"><span class="status-dot"></span>SYSTEM ONLINE</span><span class="desktop-only">PORTFOLIO MODE</span><button id="notification-btn" class="notification-trigger" type="button" aria-label="Уведомления" aria-controls="notification-panel" aria-expanded="false" title="Центр уведомлений"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg> <span id="notification-count" class="notification-count" hidden>0</span></button><time id="clock">--:--</time></div>
     </header>
     <div class="main-area" id="main-area">
       <div class="hero" aria-hidden="true"><small>PERSONAL WORKSPACE / 2026</small><h1>TAKURA<span><br>OS_</span></h1><p>Система открыта. Исследуй приложения, инженерные разработки и цифровые истории. Это портфолио работает как маленькая ОС — без корпоратского слежения.</p><div class="hero-meta">[ <strong>STATUS: ONLINE</strong> ] &nbsp; // &nbsp; CLICK AN ICON TO BEGIN</div></div>
@@ -136,13 +171,20 @@
         <button class="desktop-icon" data-open="settings"><span class="glyph">⚙</span><span class="label">Настройки</span></button>
         <button class="desktop-icon" data-open="files"><span class="glyph">▣</span><span class="label">Файлы</span></button>
         <button class="desktop-icon" data-open="music"><span class="glyph">♫</span><span class="label">Музыка</span></button>
+        <button class="desktop-icon" data-open="systeminfo"><span class="glyph">◎</span><span class="label">О системе</span></button>
       </div>
       <div class="side-info"><b>WELCOME TO THE GRID</b><br>USER // TAKURA IMPARIS<br>MODE // INTERACTIVE PORTFOLIO<br>NO BACKEND REQUIRED</div>
       <div class="window-layer" id="window-layer" aria-live="off"></div>
     </div>
     <div class="start-menu" id="start-menu" hidden><div class="menu-heading">// INSTALLED APPLICATIONS</div><div class="menu-grid" id="menu-grid"></div><div class="menu-footer">TAKURA OS — личное портфолио · Ctrl+K: поиск · Esc: закрыть меню</div></div>
-    <footer class="taskbar"><button class="launcher" id="launcher" aria-label="Открыть меню приложений" aria-expanded="false">T</button><span class="task-divider"></span><button class="task-item" id="search-btn" title="Поиск приложений Ctrl+K">⌕ ПОИСК</button><div class="task-items" id="task-items"></div><div class="task-right"><span class="status-label"><b>●</b> ONLINE</span><span id="clock-bottom">--:--</span></div></footer>
+    <footer class="taskbar"><button class="launcher" id="launcher" aria-label="Открыть меню приложений" aria-expanded="false">T</button><span class="task-divider"></span><button class="task-item" id="search-btn" title="Поиск приложений Ctrl+K">⌕ ПОИСК</button><div class="task-items" id="task-items"></div><button id="desktop-toggle" class="task-utility" title="Свернуть все окна / восстановить" aria-label="Показать рабочий стол">▤</button><div class="task-right"><span class="status-label"><b>●</b> ONLINE</span><span id="clock-bottom">--:--</span></div></footer>
     <div class="search-overlay" id="search-overlay" hidden><div class="search-card" role="dialog" aria-modal="true" aria-label="Поиск приложений"><input class="search-box" id="search-input" placeholder="Найти приложение или проект…" autocomplete="off" aria-label="Поиск"><div class="search-results" id="search-results"></div></div></div>
+    <div class="notification-panel" id="notification-panel" role="dialog" aria-label="Центр уведомлений" hidden>
+      <div class="notice-head"><div><div class="kicker">SYSTEM EVENTS</div><strong>Уведомления</strong></div><button id="notification-close" class="mini-btn" type="button" aria-label="Закрыть уведомления">×</button></div>
+      <div class="notice-tools"><button id="notification-read" class="mini-btn" type="button">Отметить прочитанными</button><button id="notification-clear" class="mini-btn" type="button">Очистить</button></div>
+      <div class="notification-list" id="notification-list"></div>
+      <p class="notice-foot">Только события этой страницы. Уведомления не отправляются на сервер.</p>
+    </div>
     <div class="toast" id="toast" role="status" hidden></div>
     <div class="boot-screen" id="boot-overlay" role="status" aria-label="Загрузка TAKURA OS">
       <div class="boot-card"><div class="boot-symbol">T</div><div class="boot-title">TAKURA // OS 3.0</div>
@@ -173,6 +215,7 @@
     {id:'settings',name:'Настройки',icon:'⚙'},
     {id:'files',name:'Файловый менеджер',icon:'▣'},
     {id:'music',name:'Музыкальный плеер',icon:'♫'},
+    {id:'systeminfo',name:'О системе',icon:'◎'},
     ...PROJECTS.map(p=>({id:p.id,name:p.name,icon:p.icon}))
   ];
   const $ = s => document.querySelector(s);
@@ -180,7 +223,7 @@
   const state = {windows:new Map(),z:11,seq:0,theme:'cyan',grid:true};
   const desktop=$('#desktop'), layer=$('#window-layer'), tasks=$('#task-items'), start=$('#start-menu'), launcher=$('#launcher'), searchOverlay=$('#search-overlay');
   let toastTimer;
-  function notify(msg) {const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.hidden=true,3600)}
+  function notify(msg) {addNotification(String(msg));const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.hidden=true,3600)}
   function safeTheme(theme) {return ['cyan','violet','amber','rose'].includes(theme)?theme:'cyan'}
   try {state.theme=safeTheme(localStorage.getItem('takura-theme'));state.grid=localStorage.getItem('takura-grid')!=='off'} catch(_) {}
   document.documentElement.dataset.theme=state.theme;desktop.classList.toggle('no-grid',!state.grid);
@@ -192,17 +235,40 @@
   function action(label,onclick,secondary=false){const b=el('button','action'+(secondary?' secondary':''),label);b.type='button';b.addEventListener('click',onclick);return b}
   function focusWindow(id){const w=state.windows.get(id);if(!w)return;state.windows.forEach((win,key)=>{win.classList.toggle('focused',key===id);const btn=document.querySelector(`[data-task="${key}"]`);if(btn)btn.classList.toggle('active',key===id&&!win.classList.contains('minimized'))});w.style.zIndex=++state.z}
   function updateTasks(){tasks.innerHTML='';state.windows.forEach((win,id)=>{const a=APPS.find(x=>x.id===id)||{name:id,icon:'□'};const b=el('button','task-item',a.icon+' '+a.name);b.title=a.name;b.dataset.task=id;b.addEventListener('click',()=>{if(win.classList.contains('minimized')){win.classList.remove('minimized');focusWindow(id)}else if(win.classList.contains('focused')){win.classList.add('minimized');win.classList.remove('focused');updateTasks()}else focusWindow(id)});tasks.append(b)});const active=[...state.windows].find(([,w])=>w.classList.contains('focused')&&!w.classList.contains('minimized'));if(active)focusWindow(active[0])}
-  function closeWindow(id){const win=state.windows.get(id);if(!win)return;win.remove();state.windows.delete(id);updateTasks()}
-  function toggleMax(win){win.classList.toggle('maximized');if(win.classList.contains('maximized'))notify('Окно развернуто')}
+  function closeWindow(id){const win=state.windows.get(id);if(!win)return;win.remove();state.windows.delete(id);updateTasks();addNotification('Закрыто окно: '+(APPS.find(a=>a.id===id)?.name||id),'Окна')}
+  function toggleMax(win){
+    const willMax=!win.classList.contains('maximized');
+    win.classList.remove('snapped-left','snapped-right');win.classList.toggle('maximized',willMax);
+    updateWindowButtons(win);focusWindow(win.dataset.window);
+    if(willMax)notify('Окно развернуто');
+  }
+  function updateWindowButtons(win){const b=win.querySelector('[data-maximize]');if(b){b.textContent=win.classList.contains('maximized')?'❐':'□';b.setAttribute('aria-label',win.classList.contains('maximized')?'Восстановить размер':'Развернуть окно')}}
+  function snapWindow(win,side){
+    if(!win||window.matchMedia('(max-width:760px)').matches)return;
+    if(!['left','right'].includes(side))return;
+    const cls='snapped-'+side, restore=win.classList.contains(cls);
+    win.classList.remove('maximized','snapped-left','snapped-right');
+    if(!restore)win.classList.add(cls);
+    updateWindowButtons(win);focusWindow(win.dataset.window);
+    notify(restore?'Свободный размер окна':'Окно закреплено: '+(side==='left'?'слева':'справа'));
+  }
+  function currentWindow(){return [...state.windows.values()].filter(w=>w.classList.contains('focused')&&!w.classList.contains('minimized')).at(-1)||null}
+  let minimizedForDesktop=[];
+  function toggleDesktop(){
+    if(minimizedForDesktop.length){for(const id of minimizedForDesktop){const w=state.windows.get(id);if(w)w.classList.remove('minimized')}const focusId=minimizedForDesktop.at(-1);minimizedForDesktop=[];updateTasks();if(focusId&&state.windows.has(focusId))focusWindow(focusId);return}
+    minimizedForDesktop=[...state.windows].filter(([,w])=>!w.classList.contains('minimized')).map(([id])=>id);
+    for(const id of minimizedForDesktop)state.windows.get(id)?.classList.add('minimized');
+    state.windows.forEach(w=>w.classList.remove('focused'));updateTasks();
+  }
   function draggable(win,bar){let drag=null;bar.addEventListener('pointerdown',(e)=>{if(e.target.closest('button')||window.matchMedia('(max-width:760px)').matches||win.classList.contains('maximized'))return;if(e.button!==0)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY,l:win.offsetLeft,t:win.offsetTop};bar.setPointerCapture(e.pointerId)});bar.addEventListener('pointermove',(e)=>{if(!drag||e.pointerId!==drag.id)return;const parent=$('#main-area');const x=Math.max(0,Math.min(parent.clientWidth-win.offsetWidth,drag.l+e.clientX-drag.x));const y=Math.max(0,Math.min(parent.clientHeight-win.offsetHeight,drag.t+e.clientY-drag.y));win.style.left=x+'px';win.style.top=y+'px'});const stop=()=>drag=null;bar.addEventListener('pointerup',stop);bar.addEventListener('pointercancel',stop);bar.addEventListener('dblclick',(e)=>{if(!e.target.closest('button'))toggleMax(win)})}
-  function openApp(id){hideStart();hideSearch();const old=state.windows.get(id);if(old){old.classList.remove('minimized');focusWindow(id);updateTasks();return}const a=APPS.find(x=>x.id===id);if(!a){notify('Приложение не найдено');return}const win=el('section','window');win.setAttribute('role','dialog');win.setAttribute('aria-label',a.name);win.dataset.window=id;const parent=$('#main-area');const mobile=window.matchMedia('(max-width:760px)').matches;const offset=(state.seq++%5)*28;win.style.left=mobile?'5px':Math.min(175+offset,Math.max(8,parent.clientWidth-735))+'px';win.style.top=mobile?'5px':(37+offset)+'px';win.style.zIndex=++state.z;const bar=el('header','winbar');const symbol=el('span','win-icon',a.icon),title=el('span','win-title',a.name),buttons=el('div','win-actions');const minimize=el('button','win-btn','−');minimize.title='Свернуть';minimize.setAttribute('aria-label','Свернуть окно');minimize.addEventListener('click',()=>{win.classList.add('minimized');win.classList.remove('focused');updateTasks()});const max=el('button','win-btn','□');max.title='Развернуть';max.setAttribute('aria-label','Развернуть окно');max.addEventListener('click',()=>toggleMax(win));const close=el('button','win-btn close','×');close.title='Закрыть';close.setAttribute('aria-label','Закрыть окно');close.addEventListener('click',()=>closeWindow(id));buttons.append(minimize,max,close);bar.append(symbol,title,buttons);const body=el('div','window-body');win.append(bar,body);layer.append(win);state.windows.set(id,win);draggable(win,bar);win.addEventListener('pointerdown',()=>focusWindow(id));if(id==='welcome')renderWelcome(body);else if(id==='projects')renderProjects(body);else if(id==='terminal'){win.classList.add('terminal-window');renderTerminalV3(body)}else if(id==='files'){win.classList.add('files-window');renderFiles(body)}else if(id==='music'){win.classList.add('music-window');renderMusic(body)}else if(id==='about')renderAbout(body);else if(id==='settings')renderSettingsV3(body);else renderProject(body,PROJECTS.find(p=>p.id===id));focusWindow(id);updateTasks();if(id==='terminal')body.querySelector('input')?.focus()}
-  function renderWelcome(body){const split=el('div','split');const content=el('div');content.innerHTML='<div class="kicker">BOOT SEQUENCE COMPLETE · TAKURA OS 3.0</div><h2 class="section-title">Добро пожаловать<br>в TAKURA OS_</h2><p class="lead">Это интерактивное портфолио. Открывай приложения, изучай проекты, редактируй заметки, слушай свою музыку и работай с терминалом. Всё запускается прямо в браузере, без установки.</p>';const row=el('div','action-row');row.append(action('▦ Открыть проекты',()=>openApp('projects')),action('>_ Запустить терминал',()=>openApp('terminal'),true));content.append(row);const symbol=el('div','sys-symbol','T');split.append(content,symbol);body.append(split);const note=el('div','notice','Подсказка: перетаскивай окна за заголовок, используй меню «T» внизу или Ctrl+K для быстрого поиска. Заметки хранятся локально.');body.append(note)}
+  function openApp(id){hideStart();hideSearch();const old=state.windows.get(id);if(old){old.classList.remove('minimized');focusWindow(id);updateTasks();return}const a=APPS.find(x=>x.id===id);if(!a){notify('Приложение не найдено');return}const win=el('section','window');win.setAttribute('role','dialog');win.setAttribute('aria-label',a.name);win.dataset.window=id;const parent=$('#main-area');const mobile=window.matchMedia('(max-width:760px)').matches;const offset=(state.seq++%5)*28;win.style.left=mobile?'5px':Math.min(175+offset,Math.max(8,parent.clientWidth-735))+'px';win.style.top=mobile?'5px':(37+offset)+'px';win.style.zIndex=++state.z;const bar=el('header','winbar');const symbol=el('span','win-icon',a.icon),title=el('span','win-title',a.name),buttons=el('div','win-actions');const minimize=el('button','win-btn','−');minimize.title='Свернуть';minimize.setAttribute('aria-label','Свернуть окно');minimize.addEventListener('click',()=>{win.classList.add('minimized');win.classList.remove('focused');updateTasks()});const snapLeft=el('button','win-btn snap','◧');snapLeft.title='Закрепить слева';snapLeft.setAttribute('aria-label','Закрепить слева');snapLeft.addEventListener('click',()=>snapWindow(win,'left'));const snapRight=el('button','win-btn snap','◨');snapRight.title='Закрепить справа';snapRight.setAttribute('aria-label','Закрепить справа');snapRight.addEventListener('click',()=>snapWindow(win,'right'));const max=el('button','win-btn','□');max.title='Развернуть';max.dataset.maximize='true';max.setAttribute('aria-label','Развернуть окно');max.addEventListener('click',()=>toggleMax(win));const close=el('button','win-btn close','×');close.title='Закрыть';close.setAttribute('aria-label','Закрыть окно');close.addEventListener('click',()=>closeWindow(id));buttons.append(snapLeft,snapRight,minimize,max,close);bar.append(symbol,title,buttons);const body=el('div','window-body');win.append(bar,body);layer.append(win);state.windows.set(id,win);draggable(win,bar);win.addEventListener('pointerdown',()=>focusWindow(id));if(id==='welcome')renderWelcome(body);else if(id==='projects')renderProjects(body);else if(id==='terminal'){win.classList.add('terminal-window');renderTerminalV3(body)}else if(id==='files'){win.classList.add('files-window');renderFiles(body)}else if(id==='music'){win.classList.add('music-window');renderMusic(body)}else if(id==='about')renderAbout(body);else if(id==='settings')renderSettingsV3(body);else if(id==='systeminfo')renderSystemInfo(body);else renderProject(body,PROJECTS.find(p=>p.id===id));focusWindow(id);updateTasks();if(id==='terminal')body.querySelector('input')?.focus()}
+  function renderWelcome(body){const split=el('div','split');const content=el('div');content.innerHTML='<div class="kicker">BOOT SEQUENCE COMPLETE · TAKURA OS 3.1</div><h2 class="section-title">Добро пожаловать<br>в TAKURA OS_</h2><p class="lead">Это интерактивное портфолио. Открывай приложения, изучай проекты, редактируй заметки, слушай свою музыку и работай с терминалом. Всё запускается прямо в браузере, без установки.</p>';const row=el('div','action-row');row.append(action('▦ Открыть проекты',()=>openApp('projects')),action('>_ Запустить терминал',()=>openApp('terminal'),true));content.append(row);const symbol=el('div','sys-symbol','T');split.append(content,symbol);body.append(split);const note=el('div','notice','Подсказка: перетаскивай окна за заголовок, используй меню «T» или Ctrl+K. Закрепляй окна ◧/◨, проверяй события через значок ♧ вверху. Заметки хранятся локально.');body.append(note)}
   function renderProjects(body){body.innerHTML='<div class="kicker">APPLICATION LIBRARY / 04 ITEMS</div><h2 class="section-title">Мои проекты<span style="color:var(--accent)">.</span></h2><p class="lead">Каждый проект можно открыть как отдельное приложение. Демоверсии подключены только там, где есть известные рабочие адреса.</p>';const grid=el('div','projects-grid');PROJECTS.forEach(p=>{const card=el('button','project-card');const top=el('div','card-top');top.append(el('span','card-icon',p.icon),el('span','card-state',p.status));card.append(top,el('h3','',p.name),el('p','',p.short));card.addEventListener('click',()=>openApp(p.id));grid.append(card)});body.append(grid)}
   function renderProject(body,p){if(!p)return;const banner=el('div','detail-banner');banner.append(el('span','detail-logo',p.icon));const info=el('div');info.append(el('small','',p.type+' / '+p.status),el('h2','',p.name));banner.append(info);body.append(banner);body.append(el('div','detail-section','// ОБЗОР'));body.append(el('p','detail-body',p.description));const tags=el('div','tag-row');p.tags.forEach(t=>tags.append(el('span','tag',t)));body.append(tags);body.append(el('div','detail-section','// ДОСТУП'));const links=el('div','action-row');p.links.forEach(l=>{const a=el('a','action',l.label+' ↗');a.href=l.url;a.target='_blank';a.rel='noopener noreferrer';links.append(a)});links.append(action('← Все проекты',()=>openApp('projects'),true));body.append(links);if(!p.links.length)body.append(el('div','notice','Публичная демоверсия пока не подключена. Когда проект будет готов, сюда можно добавить ссылку на релиз или репозиторий.'))}
   function renderAbout(body){body.innerHTML='<div class="kicker">IDENTITY / TAKURA IMPARIS</div><h2 class="section-title">Привет. Я Takura.</h2><p class="lead">Разрабатываю программные инструменты, экспериментирую с интерфейсами и инженерными решениями, а ещё создаю интерактивные истории. Здесь собраны мои проекты — от университетской навигации до хоррор-игр.</p>';const tiles=el('div','about-tiles');[['SOFTWARE','Python, Flutter, Web'],['ENGINEERING','Расчёты и моделирование'],['STORYTELLING','Интерактивные истории']].forEach(([h,t])=>{const tile=el('div','tile');tile.append(el('strong','',h),el('p','',t));tiles.append(tile)});body.append(tiles);const row=el('div','action-row');const gh=el('a','action','GitHub профиль ↗');gh.href=GITHUB_PROFILE;gh.target='_blank';gh.rel='noopener noreferrer';row.append(gh,action('Смотреть проекты',()=>openApp('projects'),true));body.append(row);body.append(el('div','notice','Это публичная витрина проектов. Секретные ключи, данные пользователей и приватный код сюда не выкладываются.'))}
   function renderSettings(body){body.innerHTML='<div class="kicker">CONTROL PANEL / PERSONALIZATION</div><h2 class="section-title">Настройки.</h2><p class="lead">Меняй внешний вид своей OS. Настройки темы сохраняются в браузере.</p>';const group=el('div','settings-group');group.append(el('h3','','Цвет акцента'));const sw=el('div','swatches');[['cyan','Mint Neon'],['violet','Night Violet'],['amber','Burnt Amber']].forEach(([value,label])=>{const b=el('button','swatch'+(state.theme===value?' selected':''),label);b.addEventListener('click',()=>{setTheme(value);sw.querySelectorAll('.swatch').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});sw.append(b)});group.append(sw);body.append(group);const g2=el('div','settings-group');g2.append(el('h3','','Рабочий стол'));const label=el('label','toggle');const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=state.grid;checkbox.addEventListener('change',()=>{state.grid=checkbox.checked;desktop.classList.toggle('no-grid',!state.grid);persist('takura-grid',state.grid?'on':'off')});label.append(checkbox,document.createTextNode('Показывать сетку фона'));g2.append(label);body.append(g2);body.append(el('div','notice','TAKURA OS работает как статический сайт GitHub Pages. Терминал — безопасная имитация команд, а не доступ к компьютеру посетителя.'))}
   function renderTerminal(body){const feed=el('div','terminal-feed');feed.setAttribute('aria-label','История терминала');const form=el('form','terminal-form');const prompt=el('span','prompt','takura@os:~$');const input=el('input','terminal-input');input.autocomplete='off';input.spellcheck=false;input.setAttribute('aria-label','Команда терминала');input.placeholder='help';form.append(prompt,input,el('span','terminal-hint','↵'));body.append(feed,form);const hist=[];let cursor=0;function print(value,cls=''){const line=el('div','term-line '+cls,value);feed.append(line);feed.scrollTop=feed.scrollHeight}print('TAKURA OS [v2.0] — web shell','dim');print('Добро пожаловать, чумба. Напиши help для списка команд.','');print('','');form.addEventListener('submit',e=>{e.preventDefault();const cmd=input.value.trim();if(!cmd)return;print('takura@os:~$ '+cmd,'command');hist.push(cmd);cursor=hist.length;input.value='';run(cmd)});input.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){e.preventDefault();cursor=Math.max(0,cursor-1);input.value=hist[cursor]||''}else if(e.key==='ArrowDown'){e.preventDefault();cursor=Math.min(hist.length,cursor+1);input.value=hist[cursor]||''}});function run(raw){const parts=raw.split(/\s+/);const command=parts[0].toLowerCase();const arg=parts.slice(1).join(' ').toLowerCase();switch(command){case'help':print('help        список команд\nwhoami      кто я\nabout       обо мне\nprojects    список проектов\nls          установленные приложения\nopen NAME   открыть приложение (uninav, unicav, haunted, morse, projects, about, settings)\ngithub      открыть профиль GitHub\ntheme X     сменить тему (cyan / violet / amber)\ndate        локальное время\necho TEXT   вывести текст\nclear       очистить терминал\nneofetch    информация о системе');break;case'whoami':print('Takura Imparis // разработка · инженерия · интерактивные истории');break;case'about':print('TAKURA OS — интерактивное портфолио. Читай проекты и запускай приложения.');break;case'ls':case'projects':print(PROJECTS.map(p=>`${p.icon}  ${p.name} — ${p.status}`).join('\n'));break;case'open':{const aliases={morse:'morse',haunted:'haunted',hauntedos:'haunted',unicav:'unicav',uninav:'uninav',project:'projects',projects:'projects',about:'about',settings:'settings',terminal:'terminal',welcome:'welcome'};const name=aliases[arg.replaceAll(/[^a-z]/g,'')];if(name){openApp(name);print('Запуск '+name+'…')}else print('Неизвестное приложение. Попробуй ls или open uninav','error');break}case'github':window.open(GITHUB_PROFILE,'_blank','noopener,noreferrer');print('Открываю GitHub в новой вкладке…');break;case'theme':if(['cyan','violet','amber'].includes(arg)){setTheme(arg);print('Тема: '+arg)}else print('Варианты: cyan, violet, amber','error');break;case'date':print(new Date().toLocaleString('ru-RU'));break;case'echo':print(raw.slice(raw.indexOf(' ')+1));break;case'clear':feed.replaceChildren();break;case'neofetch':print('  T // TAKURA OS\n  ─────────────────────────\n  User    : Takura Imparis\n  Platform: GitHub Pages / browser\n  Version : 2.0\n  Apps    : '+PROJECTS.length+' projects + utilities\n  Theme   : '+state.theme+'\n  Privacy : no tracking scripts');break;case'sudo':print('Доступ запрещён. Даже корпам сюда нельзя.','error');break;default:print('Команда не найдена: '+command+'. Напиши help.','error')}}}
-  // TAKURA OS 3.0: browser-only virtual filesystem, local music and personalization.
+  // TAKURA OS 3.1: browser-only virtual filesystem, local music and personalization.
   const STARTED_AT = Date.now();
   const APP_STORAGE = 'takura-os-v3-notes';
   const FOLDERS = ['/', '/projects', '/notes', '/system'];
@@ -239,9 +305,9 @@
   }
   const staticFiles = () => {
     const files = {
-      '/system/README.txt':'TAKURA OS 3.0\n\nИнтерактивное портфолио на GitHub Pages.\nФайловый менеджер работает с виртуальными папками.\nЗаметки сохраняются только в хранилище этого браузера.\nМузыка выбирается с устройства и не загружается на сервер.\nВстроенный терминал — безопасная имитация команд.',
+      '/system/README.txt':'TAKURA OS 3.1\n\nИнтерактивное портфолио на GitHub Pages.\nФайловый менеджер работает с виртуальными папками.\nЗаметки сохраняются только в хранилище этого браузера.\nМузыка выбирается с устройства и не загружается на сервер.\nВстроенный терминал — безопасная имитация команд.',
       '/system/commands.txt':'help, whoami, about, projects, ls, cd, pwd, tree, cat, touch, write, rm, open, files, music, play, pause, next, theme, wallpaper, date, uptime, neofetch, clear, history, reboot',
-      '/system/version.txt':'TAKURA OS 3.0\nRuntime: browser / no backend\nHost: GitHub Pages compatible',
+      '/system/version.txt':'TAKURA OS 3.1\nRuntime: browser / no backend\nHost: GitHub Pages compatible',
     };
     for (const project of PROJECTS) {
       files['/projects/'+project.id+'.md']='# '+project.name+'\n\nСтатус: '+project.status+'\n\n'+project.description+'\n\nТехнологии: '+project.tags.join(', ')+ '\n' + project.links.map(l=>l.label+': '+l.url).join('\n');
@@ -447,13 +513,14 @@
       applyPreferences();renderSettingsV3(body);notify('Оформление сброшено');
     },true));box.append(actions);body.append(box);
     body.append(el('div','notice','Файлы в «Заметках» хранятся только в текущем браузере. Музыка воспроизводится локально. Ни эти данные, ни аудиофайлы не отправляются на GitHub Pages.'));
+    const sysAction=el('div','action-row');sysAction.append(action('◎ О системе и диагностика',()=>openApp('systeminfo'),true));body.append(sysAction);
   }
 
   function renderTerminalV3(body) {
     body.replaceChildren();const feed=el('div','terminal-feed');feed.setAttribute('aria-label','История терминала');const form=el('form','terminal-form');const prompt=el('span','prompt','takura@os:/$'),input=el('input','terminal-input');input.autocomplete='off';input.spellcheck=false;input.setAttribute('aria-label','Команда терминала');input.placeholder='help';form.append(prompt,input,el('span','terminal-hint','↵'));body.append(feed,form);
     let history=[],cursor=0;const print=(v,cls='')=>{feed.append(el('div','term-line '+cls,String(v)));feed.scrollTop=feed.scrollHeight};
     const refreshPrompt=()=>prompt.textContent='takura@os:'+virtual.cwd+'$';refreshPrompt();
-    print('TAKURA OS [v3.0] — virtual shell','dim');print('Введи help — покажу команды. Твои файлы лежат в виртуальных папках.');print('');
+    print('TAKURA OS [v3.1] — virtual shell','dim');print('Введи help — покажу команды. Твои файлы лежат в виртуальных папках.');print('');
     form.addEventListener('submit',e=>{e.preventDefault();const raw=input.value.trim();if(!raw)return;print(prompt.textContent+' '+raw,'command');history.push(raw);cursor=history.length;input.value='';run(raw);refreshPrompt()});
     input.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){e.preventDefault();cursor=Math.max(0,cursor-1);input.value=history[cursor]||''}else if(e.key==='ArrowDown'){e.preventDefault();cursor=Math.min(history.length,cursor+1);input.value=history[cursor]||''}});
     function run(raw) {
@@ -461,14 +528,19 @@
       const cmd=(tokens[0]||'').toLowerCase(),arg=tokens.slice(1).join(' ').replace(/^"|"$/g,'');
       const key=arg.toLowerCase();
       switch(cmd) {
-        case 'help':print(`ДОСТУПНЫЕ КОМАНДЫ\nhelp             помощь\nwhoami / about   информация\nprojects         список проектов\nopen NAME        открыть приложение\nls [PATH]        список виртуальных файлов\npwd              текущая папка\ncd PATH          перейти в папку\ntree             дерево каталогов\ncat FILE         прочитать файл\ntouch NAME       создать заметку (/notes)\nwrite NAME TEXT  записать текст в заметку\nrm NAME          удалить заметку с подтверждением\nfiles / music    открыть приложения\nplay / pause / next   плеер\ntheme NAME       cyan, violet, amber, rose\nwallpaper NAME   grid, nebula, sunset, void\nuptime / neofetch   система\nhistory / clear  история / очистить\ndate / echo TEXT часы / вывод текста\ngithub / reboot  профиль / загрузка`);break;
+        case 'help':print(`ДОСТУПНЫЕ КОМАНДЫ\nhelp             помощь\nwhoami / about   информация\nprojects         список проектов\nopen NAME        открыть приложение\nls [PATH]        список виртуальных файлов\npwd              текущая папка\ncd PATH          перейти в папку\ntree             дерево каталогов\ncat FILE         прочитать файл\ntouch NAME       создать заметку (/notes)\nwrite NAME TEXT  записать текст в заметку\nrm NAME          удалить заметку с подтверждением\nfiles / music    открыть приложения\nplay / pause / next   плеер\ntheme NAME       cyan, violet, amber, rose\nwallpaper NAME   grid, nebula, sunset, void\nuptime / neofetch   система\nhistory / clear  история / очистить\ndate / echo TEXT часы / вывод текста\ngithub / reboot  профиль / загрузка\nnotifications     центр уведомлений\ndiag / sysinfo    диагностика ОС\nwindows           список окон\nsnap left|right  закрепить активное окно\nnotify TEXT      тест уведомления`);break;
         case 'whoami':print('Takura Imparis // developer, engineer, interactive storyteller');break;
-        case 'about':print('TAKURA OS 3.0 — интерактивное портфолио. Нет доступа к настоящим файлам компьютера.');break;
+        case 'about':print('TAKURA OS 3.1 — интерактивное портфолио. Нет доступа к настоящим файлам компьютера.');break;
         case 'projects':print(PROJECTS.map(p=>p.icon+'  '+p.name+' — '+p.status).join('\n'));break;
         case 'open':{
-          const aliases={morse:'morse',haunted:'haunted',hauntedos:'haunted',unicav:'unicav',uninav:'uninav',projects:'projects',project:'projects',about:'about',settings:'settings',terminal:'terminal',welcome:'welcome',files:'files',file:'files',explorer:'files',music:'music',player:'music'};
+          const aliases={morse:'morse',haunted:'haunted',hauntedos:'haunted',unicav:'unicav',uninav:'uninav',projects:'projects',project:'projects',about:'about',settings:'settings',terminal:'terminal',welcome:'welcome',files:'files',file:'files',explorer:'files',music:'music',player:'music',systeminfo:'systeminfo',system:'systeminfo',info:'systeminfo',diag:'systeminfo'};
           const app=aliases[key.replace(/[^a-z]/g,'')];if(app){openApp(app);print('Запуск '+app+'…')}else print('Неизвестное приложение. Введи ls или help','error');break;
         }
+        case 'notifications':showNotifications();print('Центр уведомлений открыт');break;
+        case 'diag':case 'sysinfo':openApp('systeminfo');print('Диагностика: '+diagnosticsSummary());break;
+        case 'windows':print([...state.windows].map(([id,w])=>id+(w.classList.contains('minimized')?' [свернуто]':w.classList.contains('maximized')?' [развернуто]':w.classList.contains('snapped-left')?' [слева]':w.classList.contains('snapped-right')?' [справа]':' [окно]')).join('\n')||'Нет открытых окон');break;
+        case 'snap':if(['left','right'].includes(key)){const w=currentWindow();if(w){snapWindow(w,key);print('Закреплено: '+key)}else print('Нет активного окна','error')}else print('Используй snap left или snap right','error');break;
+        case 'notify':if(arg){notify(arg.slice(0,180));print('Уведомление добавлено')}else print('Используй notify Текст','error');break;
         case 'files':openApp('files');print('Файловый менеджер открыт');break;
         case 'music':openApp('music');print('Плеер открыт');break;
         case 'ls':{
@@ -509,13 +581,93 @@
         case 'echo':print(raw.replace(/^echo\s*/i,''));break;
         case 'history':print(history.map((v,i)=>String(i+1).padStart(2,'0')+' '+v).join('\n'));break;
         case 'uptime':print('Система активна '+Math.floor((Date.now()-STARTED_AT)/1000)+' сек.');break;
-        case 'neofetch':print(' T // TAKURA OS\n ─────────────────────────\n User    : Takura Imparis\n Version : 3.0\n Runtime : Browser / GitHub Pages\n Apps    : '+APPS.length+'\n Notes   : '+Object.keys(notes).length+'\n Theme   : '+state.theme+'\n Privacy : local-first');break;
+        case 'neofetch':print(' T // TAKURA OS\n ─────────────────────────\n User    : Takura Imparis\n Version : 3.1\n Runtime : Browser / GitHub Pages\n Apps    : '+APPS.length+'\n Notes   : '+Object.keys(notes).length+'\n Theme   : '+state.theme+'\n Privacy : local-first');break;
         case 'clear':feed.replaceChildren();break;
         case 'reboot':runBoot(true);print('Загрузка интерфейса…');break;
         case 'sudo':print('root недоступен. Даже корпорации не оплатили эту лицензию.','error');break;
         default:print('Команда не найдена: '+cmd+'. Введи help.','error');
       }
     }
+  }
+
+  // 3.1: Notifications do not use browser push and never send data over the network.
+  const NOTICE_KEY='takura-os-v31-notifications';
+  let notifications=[];
+  let noticeSequence=0;
+  try {const saved=JSON.parse(localStorage.getItem(NOTICE_KEY)||'[]');if(Array.isArray(saved))notifications=saved.filter(x=>x&&typeof x.text==='string'&&typeof x.time==='number').slice(0,35).map(x=>({id:Number(x.id)||0,text:x.text.slice(0,180),section:String(x.section||'Система').slice(0,35),time:x.time,read:Boolean(x.read)}));}catch(_){}
+  function persistNotifications(){try{localStorage.setItem(NOTICE_KEY,JSON.stringify(notifications.slice(0,35)))}catch(_){}}
+  function addNotification(text,section='Система'){
+    notifications.unshift({id:Date.now()+noticeSequence++,text:String(text).slice(0,180),section:String(section).slice(0,35),time:Date.now(),read:false});
+    notifications.length=Math.min(35,notifications.length);persistNotifications();renderNotificationPanel();
+  }
+  function unreadCount(){return notifications.filter(n=>!n.read).length}
+  function renderNotificationPanel(){
+    const count=$('#notification-count');if(!count)return;
+    const unread=unreadCount();count.hidden=unread===0;count.textContent=unread>9?'9+':String(unread);
+    const list=$('#notification-list');list.replaceChildren();
+    if(!notifications.length){list.append(el('div','notification-empty','Событий пока нет. Всё тихо. Подозрительно тихо.'));return}
+    notifications.forEach(n=>{
+      const btn=el('button','notification-entry'+(!n.read?' unread':''));btn.type='button';btn.append(el('div','',n.text));
+      const meta=el('div','notification-meta');meta.append(el('span','',n.section),el('time','',new Date(n.time).toLocaleString('ru-RU',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'})));btn.append(meta);
+      btn.setAttribute('aria-label',(n.read?'Прочитано: ':'Непрочитано: ')+n.text);
+      btn.addEventListener('click',()=>{n.read=true;persistNotifications();renderNotificationPanel()});list.append(btn);
+    });
+  }
+  function hideNotifications(){const p=$('#notification-panel');if(!p.hidden){p.hidden=true;$('#notification-btn').setAttribute('aria-expanded','false')}}
+  function showNotifications(){hideStart();hideSearch();const p=$('#notification-panel');p.hidden=false;$('#notification-btn').setAttribute('aria-expanded','true');renderNotificationPanel()}
+  function toggleNotifications(){if($('#notification-panel').hidden)showNotifications();else hideNotifications()}
+  $('#notification-btn').addEventListener('click',toggleNotifications);
+  $('#notification-close').addEventListener('click',hideNotifications);
+  $('#notification-read').addEventListener('click',()=>{notifications.forEach(n=>n.read=true);persistNotifications();renderNotificationPanel()});
+  $('#notification-clear').addEventListener('click',()=>{notifications=[];persistNotifications();renderNotificationPanel()});
+  $('#desktop-toggle').addEventListener('click',toggleDesktop);
+  document.addEventListener('pointerdown',e=>{const p=$('#notification-panel'),btn=$('#notification-btn');if(!p.hidden&&!p.contains(e.target)&&!btn.contains(e.target))hideNotifications()});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')hideNotifications();
+    if(!(e.ctrlKey&&e.altKey)||e.repeat)return;
+    const w=currentWindow();if(!w)return;
+    if(e.code==='ArrowLeft'){e.preventDefault();snapWindow(w,'left')}
+    else if(e.code==='ArrowRight'){e.preventDefault();snapWindow(w,'right')}
+    else if(e.code==='ArrowUp'){e.preventDefault();toggleMax(w)}
+    else if(e.code==='KeyM'){e.preventDefault();w.classList.add('minimized');w.classList.remove('focused');updateTasks()}
+  });
+  function diagnosticData(){
+    let storageOk=false;
+    try{const key='takura-os-test-'+Date.now();localStorage.setItem(key,'ok');storageOk=localStorage.getItem(key)==='ok';localStorage.removeItem(key)}catch(_){storageOk=false}
+    const audio=document.createElement('audio');
+    const audioOk=Boolean(audio.canPlayType&&audio.canPlayType('audio/mpeg'));
+    const secure=window.isSecureContext;
+    const checks=[
+      {name:'Основные элементы интерфейса',ok:!!($('#desktop')&&$('#window-layer')&&$('#launcher')&&$('#notification-panel'))},
+      {name:'Локальное хранилище доступно',ok:storageOk},
+      {name:'Воспроизведение MP3 поддерживается',ok:audioOk},
+      {name:'Защищённый контекст HTTPS/localhost',ok:secure}
+    ];
+    return {checks,storageOk,audioOk,secure,online:navigator.onLine,viewport:window.innerWidth+' × '+window.innerHeight,language:navigator.language||'unknown',open:state.windows.size,notes:Object.keys(notes).length,tracks:music.tracks.length,theme:state.theme,wallpaper:preferences.wallpaper,uptime:Math.floor((Date.now()-STARTED_AT)/1000)};
+  }
+  function diagnosticsSummary(){const d=diagnosticData();return d.checks.filter(x=>x.ok).length+'/'+d.checks.length+' базовых проверок; '+d.notes+' заметок, '+d.open+' окон'}
+  function reportText(){const d=diagnosticData();return ['TAKURA OS 3.1 / LOCAL DIAGNOSTICS',new Date().toLocaleString('ru-RU'),'','Runtime: Browser / static GitHub Pages compatible','Viewport: '+d.viewport,'Language: '+d.language,'Storage: '+(d.storageOk?'available':'unavailable'),'Audio MP3: '+(d.audioOk?'supported':'not reported'),'Secure context: '+d.secure,'Navigator online hint: '+d.online,'Open windows: '+d.open,'Local notes: '+d.notes,'Loaded music tracks: '+d.tracks,'Theme: '+d.theme,'Wallpaper: '+d.wallpaper,'Uptime: '+d.uptime+' s','','Basic checks:',...d.checks.map(x=>(x.ok?'PASS ':'CHECK ')+x.name),'','This report is generated locally. It contains no note text and is never uploaded automatically.'].join('\n')}
+  async function copyReport(){const txt=reportText();if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(txt);notify('Диагностика скопирована');return}catch(_){}}
+    downloadText('takura-os-3.1-diagnostics.txt',txt);notify('Отчёт скачан: копирование недоступно')}
+  function renderSystemInfo(body){
+    body.replaceChildren();
+    body.append(el('div','kicker','SYSTEM INFORMATION / VERSION 3.1'),el('h2','section-title','О системе.'));
+    body.append(el('p','lead','TAKURA OS — интерактивное браузерное портфолио. Диагностика оценивает доступность базовых функций среды, но не заменяет полное ручное тестирование приложений.'));
+    const metrics=el('div','sys-kpis');body.append(metrics);
+    const values=el('div','sys-rows');body.append(values);
+    const hdr=el('div','detail-section','// БАЗОВЫЕ ПРОВЕРКИ');body.append(hdr);
+    const checks=el('div','diagnostic-list');body.append(checks);
+    const actions=el('div','action-row');body.append(actions);
+    const hint=el('p','system-hint','Данные заметок и треки не отправляются в сеть. Отчёт содержит только технические показатели, без текстов твоих заметок.');body.append(hint);
+    function paint(){
+      const d=diagnosticData();metrics.replaceChildren();values.replaceChildren();checks.replaceChildren();
+      for(const [label,val] of [['Версия','3.1'],['Открытые окна',d.open],['Заметки',d.notes]]){const box=el('div','sys-kpi');box.append(el('small','',label),el('strong','',String(val)));metrics.append(box)}
+      for(const [label,val] of [['Режим','Web / GitHub Pages'],['Размер экрана',d.viewport],['Время работы',d.uptime+' сек.'],['Тема',d.theme],['Фон',d.wallpaper],['Загруженные треки',d.tracks],['Язык браузера',d.language],['Сеть (индикатор браузера)',d.online?'online (предположение)':'offline (предположение)']]){
+        const row=el('div','sys-row');row.append(el('small','',label),el('b','',String(val)));values.append(row);
+      }
+      d.checks.forEach(item=>{const row=el('div','diagnostic-row');row.append(el('span','diag-label',item.name),el('span',item.ok?'diag-pass':'diag-warn',item.ok?'PASS':'CHECK'));checks.append(row)});
+    }
+    actions.append(action('↻ Запустить диагностику',()=>{paint();notify('Диагностика завершена: '+diagnosticsSummary())}),action('⧉ Скопировать отчёт',()=>{void copyReport()},true),action('↓ Скачать отчёт',()=>downloadText('takura-os-3.1-diagnostics.txt',reportText()),true));paint();
   }
 
   let bootTimer=null;
@@ -542,6 +694,7 @@
   function showSearch(){hideStart();searchOverlay.hidden=false;const input=$('#search-input');input.value='';renderSearch('');input.focus()}
   function renderSearch(query){const res=$('#search-results');res.innerHTML='';const list=APPS.filter(a=>a.name.toLowerCase().includes(query.toLowerCase())||a.id.includes(query.toLowerCase()));if(!list.length){res.append(el('div','notice','Ничего не найдено'));return}list.forEach(a=>{const b=el('button','search-result');b.append(el('span','',a.icon));const t=el('span');t.append(el('b','',a.name),el('small','','Открыть приложение'));b.append(t);b.addEventListener('click',()=>openApp(a.id));res.append(b)})}
   $('#search-btn').addEventListener('click',showSearch);$('#search-input').addEventListener('input',e=>renderSearch(e.target.value));$('#search-input').addEventListener('keydown',e=>{if(e.key==='Enter'){const first=$('#search-results .search-result');if(first)first.click()}});searchOverlay.addEventListener('pointerdown',e=>{if(e.target===searchOverlay)hideSearch()});document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();searchOverlay.hidden?showSearch():hideSearch()}if(e.key==='Escape'){hideStart();hideSearch()}});document.addEventListener('pointerdown',e=>{if(!start.hidden&&!start.contains(e.target)&&!launcher.contains(e.target))hideStart()});document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openApp(b.dataset.open)));
+  renderNotificationPanel();
   openApp('welcome');
   runBoot(false);
 })();
